@@ -14,6 +14,7 @@
 		37164431291C4562006683F3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37164430291C4562006683F3 /* Persistence.swift */; };
 		377BB3AA291CC50300730F97 /* Analytics in Frameworks */ = {isa = PBXBuildFile; productRef = 377BB3A9291CC50300730F97 /* Analytics */; };
 		377BB3AC291CC56600730F97 /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = 377BB3AB291CC56600730F97 /* Utilities */; };
+		377BB3AF291CC98500730F97 /* EnvironmentVariableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */; };
 		37F4D017291CB950004D900B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D016291CB950004D900B /* ComposableArchitecture */; };
 		37F4D01C291CBCD9004D900B /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01B291CBCD9004D900B /* TelemetryClient */; };
 		37F4D01F291CBD33004D900B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01E291CBD33004D900B /* RevenueCat */; };
@@ -28,6 +29,7 @@
 		3716442E291C4562006683F3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37164430291C4562006683F3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		37164435291C4562006683F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableNames.swift; sourceTree = "<group>"; };
 		37F4D024291CBE7F004D900B /* iHog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHog.xcdatamodel; sourceTree = "<group>"; };
 		37F4D026291CBEE3004D900B /* App */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = App; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				37F4D026291CBEE3004D900B /* App */,
+				377BB3AD291CC97400730F97 /* Helpers */,
 				37F4D014291CB91E004D900B /* CoreData */,
 				37F4D013291CB90F004D900B /* LifeCycle */,
 				3716442B291C4562006683F3 /* Assets.xcassets */,
@@ -91,6 +94,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		377BB3AD291CC97400730F97 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		37F4D013291CB90F004D900B /* LifeCycle */ = {
@@ -195,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37F4D025291CBE7F004D900B /* iHog.xcdatamodeld in Sources */,
+				377BB3AF291CC98500730F97 /* EnvironmentVariableNames.swift in Sources */,
 				37164431291C4562006683F3 /* Persistence.swift in Sources */,
 				3716442A291C4561006683F3 /* ContentView.swift in Sources */,
 				37164428291C4561006683F3 /* iHogAppApp.swift in Sources */,

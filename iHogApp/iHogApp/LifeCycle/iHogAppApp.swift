@@ -13,14 +13,13 @@ import Utilities
 
 @main
 struct iHogAppApp: App {
-    @EnvVar(name: "telemetryDeck") var telemetryDeckAPI: String
+    @EnvVar(name: EnvVarNames.telemetryDeck) var telemetryDeckAPI: String
 
     let persistenceController = PersistenceController.shared
     let analytics = Analytics.shared
 
     init() {
         analytics.config(appID: telemetryDeckAPI)
-//        print(telemetryDeckAPI)
     }
     var body: some Scene {
         WindowGroup {
