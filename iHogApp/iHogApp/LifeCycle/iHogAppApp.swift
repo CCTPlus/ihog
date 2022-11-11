@@ -4,8 +4,12 @@
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
-//              github     @heyjaywilson
+//              github   @heyjaywilson
 //              website  cctplus.dev
+// Supporters:
+// MikaelaCaron Nov 7 2022
+//
+//
 
 import SwiftUI
 import Analytics

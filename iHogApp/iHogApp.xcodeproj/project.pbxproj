@@ -53,6 +53,7 @@
 		3716441B291C4561006683F3 = {
 			isa = PBXGroup;
 			children = (
+				37F4D026291CBEE3004D900B /* App */,
 				37164426291C4561006683F3 /* iHogApp */,
 				37164425291C4561006683F3 /* Products */,
 				377BB3A8291CC50300730F97 /* Frameworks */,
@@ -70,7 +71,6 @@
 		37164426291C4561006683F3 /* iHogApp */ = {
 			isa = PBXGroup;
 			children = (
-				37F4D026291CBEE3004D900B /* App */,
 				377BB3AD291CC97400730F97 /* Helpers */,
 				37F4D014291CB91E004D900B /* CoreData */,
 				37F4D013291CB90F004D900B /* LifeCycle */,
