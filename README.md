@@ -10,3 +10,11 @@ The following API Keys will be needed to run iHog.
 - RevenueCat
 
 These API keys are stored in Xcode's environment variables.
+
+## Dependencies
+
+[Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
+
+## Twitch Redemptions
+
+- MikaelaCaron Nov 8 2022
