@@ -12,9 +12,10 @@
 		3716442C291C4562006683F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3716442B291C4562006683F3 /* Assets.xcassets */; };
 		3716442F291C4562006683F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3716442E291C4562006683F3 /* Preview Assets.xcassets */; };
 		37164431291C4562006683F3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37164430291C4562006683F3 /* Persistence.swift */; };
-		377BB3AA291CC50300730F97 /* Analytics in Frameworks */ = {isa = PBXBuildFile; productRef = 377BB3A9291CC50300730F97 /* Analytics */; };
-		377BB3AC291CC56600730F97 /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = 377BB3AB291CC56600730F97 /* Utilities */; };
 		377BB3AF291CC98500730F97 /* EnvironmentVariableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */; };
+		37A57FCD291EAB6300AEDD9B /* Analytics in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FCC291EAB6300AEDD9B /* Analytics */; };
+		37A57FCF291EAB6300AEDD9B /* iHog in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FCE291EAB6300AEDD9B /* iHog */; };
+		37A57FD1291EAB6300AEDD9B /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FD0291EAB6300AEDD9B /* Utilities */; };
 		37F4D017291CB950004D900B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D016291CB950004D900B /* ComposableArchitecture */; };
 		37F4D01C291CBCD9004D900B /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01B291CBCD9004D900B /* TelemetryClient */; };
 		37F4D01F291CBD33004D900B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01E291CBD33004D900B /* RevenueCat */; };
@@ -30,8 +31,8 @@
 		37164430291C4562006683F3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		37164435291C4562006683F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableNames.swift; sourceTree = "<group>"; };
+		37A57FCB291EAA2200AEDD9B /* iHog */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = iHog; sourceTree = "<group>"; };
 		37F4D024291CBE7F004D900B /* iHog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHog.xcdatamodel; sourceTree = "<group>"; };
-		37F4D026291CBEE3004D900B /* App */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = App; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,9 +41,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				37F4D017291CB950004D900B /* ComposableArchitecture in Frameworks */,
-				377BB3AA291CC50300730F97 /* Analytics in Frameworks */,
+				37A57FD1291EAB6300AEDD9B /* Utilities in Frameworks */,
+				37A57FCF291EAB6300AEDD9B /* iHog in Frameworks */,
+				37A57FCD291EAB6300AEDD9B /* Analytics in Frameworks */,
 				37F4D01C291CBCD9004D900B /* TelemetryClient in Frameworks */,
-				377BB3AC291CC56600730F97 /* Utilities in Frameworks */,
 				37F4D01F291CBD33004D900B /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,7 +55,7 @@
 		3716441B291C4561006683F3 = {
 			isa = PBXGroup;
 			children = (
-				37F4D026291CBEE3004D900B /* App */,
+				37A57FCB291EAA2200AEDD9B /* iHog */,
 				37164426291C4561006683F3 /* iHogApp */,
 				37164425291C4561006683F3 /* Products */,
 				377BB3A8291CC50300730F97 /* Frameworks */,
@@ -142,8 +144,9 @@
 				37F4D016291CB950004D900B /* ComposableArchitecture */,
 				37F4D01B291CBCD9004D900B /* TelemetryClient */,
 				37F4D01E291CBD33004D900B /* RevenueCat */,
-				377BB3A9291CC50300730F97 /* Analytics */,
-				377BB3AB291CC56600730F97 /* Utilities */,
+				37A57FCC291EAB6300AEDD9B /* Analytics */,
+				37A57FCE291EAB6300AEDD9B /* iHog */,
+				37A57FD0291EAB6300AEDD9B /* Utilities */,
 			);
 			productName = iHogApp;
 			productReference = 37164424291C4561006683F3 /* iHogApp.app */;
@@ -439,11 +442,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		377BB3A9291CC50300730F97 /* Analytics */ = {
+		37A57FCC291EAB6300AEDD9B /* Analytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Analytics;
 		};
-		377BB3AB291CC56600730F97 /* Utilities */ = {
+		37A57FCE291EAB6300AEDD9B /* iHog */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = iHog;
+		};
+		37A57FD0291EAB6300AEDD9B /* Utilities */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Utilities;
 		};

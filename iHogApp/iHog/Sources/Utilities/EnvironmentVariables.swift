@@ -17,7 +17,7 @@ public struct EnvVar {
     public init(name: String) {
         self.name = name
     }
-    
+
     public var wrappedValue: String {
         get {
             return ProcessInfo.processInfo.environment[name] ?? defaultValue

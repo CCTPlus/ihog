@@ -14,6 +14,8 @@
 import SwiftUI
 import Analytics
 import Utilities
+import iHog
+import ComposableArchitecture
 
 @main
 struct iHogAppApp: App {
@@ -27,8 +29,12 @@ struct iHogAppApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ContentView(
+                store: Store(
+                    initialState: iHog.State(),
+                    reducer: iHog()
+                )
+            )
         }
     }
 }
