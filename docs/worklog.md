@@ -2,6 +2,8 @@
 
 ## Nov 11
 
+- Created a component for row list with icon
+- Added SFSafeSymbols instead of using my own
 - Added composable architecture
 - Learned that you can use bindings and manipulate navigationstack state yourself
 - renamed package from app to iHog

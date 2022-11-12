@@ -13,7 +13,10 @@ These API keys are stored in Xcode's environment variables.
 
 ## Dependencies
 
-[Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
+These are third party dependencies that are used in the app. @heyjaywilson has made the decision to use these for ease of development, best practices, or they wanted to learn how to use the package.
+
+- [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
+- [SFSafeSymbols](https://github.com/SFSafeSymbols/SFSafeSymbols)
 
 ## Twitch Redemptions
 

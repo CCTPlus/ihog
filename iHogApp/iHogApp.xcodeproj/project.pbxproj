@@ -13,6 +13,8 @@
 		3716442F291C4562006683F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3716442E291C4562006683F3 /* Preview Assets.xcassets */; };
 		37164431291C4562006683F3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37164430291C4562006683F3 /* Persistence.swift */; };
 		377BB3AF291CC98500730F97 /* EnvironmentVariableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */; };
+		3782AD0C291EF98500CACAFA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 3782AD0B291EF98500CACAFA /* SFSafeSymbols */; };
+		3782AD0E291EF9C700CACAFA /* Components in Frameworks */ = {isa = PBXBuildFile; productRef = 3782AD0D291EF9C700CACAFA /* Components */; };
 		37A57FCD291EAB6300AEDD9B /* Analytics in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FCC291EAB6300AEDD9B /* Analytics */; };
 		37A57FCF291EAB6300AEDD9B /* iHog in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FCE291EAB6300AEDD9B /* iHog */; };
 		37A57FD1291EAB6300AEDD9B /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FD0291EAB6300AEDD9B /* Utilities */; };
@@ -40,9 +42,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3782AD0E291EF9C700CACAFA /* Components in Frameworks */,
 				37F4D017291CB950004D900B /* ComposableArchitecture in Frameworks */,
 				37A57FD1291EAB6300AEDD9B /* Utilities in Frameworks */,
 				37A57FCF291EAB6300AEDD9B /* iHog in Frameworks */,
+				3782AD0C291EF98500CACAFA /* SFSafeSymbols in Frameworks */,
 				37A57FCD291EAB6300AEDD9B /* Analytics in Frameworks */,
 				37F4D01C291CBCD9004D900B /* TelemetryClient in Frameworks */,
 				37F4D01F291CBD33004D900B /* RevenueCat in Frameworks */,
@@ -147,6 +151,8 @@
 				37A57FCC291EAB6300AEDD9B /* Analytics */,
 				37A57FCE291EAB6300AEDD9B /* iHog */,
 				37A57FD0291EAB6300AEDD9B /* Utilities */,
+				3782AD0B291EF98500CACAFA /* SFSafeSymbols */,
+				3782AD0D291EF9C700CACAFA /* Components */,
 			);
 			productName = iHogApp;
 			productReference = 37164424291C4561006683F3 /* iHogApp.app */;
@@ -181,6 +187,7 @@
 				37F4D015291CB950004D900B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				37F4D01A291CBCD9004D900B /* XCRemoteSwiftPackageReference "SwiftClient" */,
 				37F4D01D291CBD33004D900B /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				3782AD0A291EF98500CACAFA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
 			productRefGroup = 37164425291C4561006683F3 /* Products */;
 			projectDirPath = "";
@@ -415,6 +422,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3782AD0A291EF98500CACAFA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		37F4D015291CB950004D900B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -442,6 +457,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3782AD0B291EF98500CACAFA /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3782AD0A291EF98500CACAFA /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		3782AD0D291EF9C700CACAFA /* Components */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Components;
+		};
 		37A57FCC291EAB6300AEDD9B /* Analytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Analytics;

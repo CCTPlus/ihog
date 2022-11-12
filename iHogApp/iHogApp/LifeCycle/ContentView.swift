@@ -10,6 +10,7 @@
 import SwiftUI
 import CoreData
 import iHog
+import Components
 import ComposableArchitecture
 
 struct ContentView: View {
@@ -25,8 +26,19 @@ struct ContentView: View {
                         send: { .pressRow($0)}
                     )
             ) {
-                NavigationLink(value: Routes.playback) {
-                    Text("Playback")
+                Section {
+                    NavigationLink(value: Routes.playback) {
+                        RowWithIcon(
+                            labelText: "Playback",
+                            color: .teal,
+                            symbol: .sliderVertical3)
+                    }
+                    NavigationLink(value: Routes.programmer) {
+                        RowWithIcon(
+                            labelText: "Programmer",
+                            color: .teal,
+                            symbol: .cooktop)
+                    }
                 }
             }
         } detail: {
