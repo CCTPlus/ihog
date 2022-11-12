@@ -23,7 +23,7 @@ struct ContentView: View {
                 selection:
                     viewStore.binding(
                         get: \.navLocation,
-                        send: { .pressRow($0)}
+                        send: { .navRowPressed($0)}
                     )
             ) {
                 // -MARK: Hardware

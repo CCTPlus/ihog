@@ -1,11 +1,16 @@
 import XCTest
+import ComposableArchitecture
 @testable import iHog
 
+@MainActor
 final class iHogTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(iHog().text, "Hello, World!")
+    func testNavRowPressed() async {
+        let store = TestStore(
+            initialState: iHog.State(),
+            reducer: iHog())
+
+        await store.send(.navRowPressed(.osc)) {
+            $0.navLocation = .osc
+        }
     }
 }

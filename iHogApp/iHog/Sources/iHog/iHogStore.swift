@@ -15,20 +15,20 @@ public struct iHog: ReducerProtocol {
     }
 
     public struct State: Equatable {
-        public var navLocation: Routes? = .osc
+        public var navLocation: Routes? = nil
 
-        public init(navLocation: Routes? = .osc) {
+        public init(navLocation: Routes? = nil) {
             self.navLocation = navLocation
         }
     }
 
     public enum Action: Equatable {
-        case pressRow(Routes?)
+        case navRowPressed(Routes?)
     }
 
     public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
         switch action {
-        case .pressRow(let newRoute):
+        case .navRowPressed(let newRoute):
             state.navLocation = newRoute
             return .none
         }

@@ -42,6 +42,6 @@ let package = Package(
             dependencies: [.product(name: "ComposableArchitecture", package: "swift-composable-architecture")]),
         .testTarget(
             name: "iHogTests",
-            dependencies: ["iHog"]),
+            dependencies: ["iHog", .product(name: "ComposableArchitecture", package: "swift-composable-architecture")]),
     ]
 )
