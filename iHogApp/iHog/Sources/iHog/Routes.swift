@@ -13,4 +13,7 @@ public enum Routes {
     case programmer
     case playback
     case osc
+    case showSettings
+    case programmerSettings
+    case feedback
 }

@@ -28,19 +28,37 @@ struct ContentView: View {
             ) {
                 Section {
                     NavigationLink(value: Routes.playback) {
-                        RowWithIcon(
-                            labelText: "Playback",
-                            color: .teal,
-                            symbol: .sliderVertical3)
+                        RowWithIcon(labelText: "Playback", color: .teal, symbol: .sliderVertical3)
                     }
                     NavigationLink(value: Routes.programmer) {
-                        RowWithIcon(
-                            labelText: "Programmer",
-                            color: .teal,
-                            symbol: .cooktop)
+                        RowWithIcon(labelText: "Programmer", color: .teal, symbol: .cooktop)
                     }
                 }
-            }
+                Section {
+                    Text("Shows")
+                }
+                Section {
+                    NavigationLink(value: Routes.osc) {
+                        RowWithIcon(labelText: "OSC Settings", color: .green, symbol: .wifi)
+                    }
+                    NavigationLink(value: Routes.programmerSettings) {
+                        RowWithIcon(labelText: "Programmer Settings", color: .purple, symbol: .cooktopFill)
+                    }
+                    NavigationLink(value: Routes.showSettings) {
+                        RowWithIcon(labelText: "Show Settings", color: .gray, symbol: .folder)
+                    }
+                }
+
+                VStack {
+                    Text("App version: \(AppInfo.version) (\(AppInfo.buildNumber))")
+                    Text("Made with ☕ in Austin")
+                }.frame(maxWidth: .infinity)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .listRowBackground(Color.clear)
+            }.listStyle(.insetGrouped)
+                .navigationTitle("iHog")
+                .navigationBarTitleDisplayMode(.large)
         } detail: {
             switch viewStore.navLocation {
             case .programmer:

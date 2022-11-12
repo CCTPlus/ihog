@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370E227A2920125D007235DC /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370E22792920125D007235DC /* AppInfo.swift */; };
 		37164428291C4561006683F3 /* iHogAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37164427291C4561006683F3 /* iHogAppApp.swift */; };
 		3716442A291C4561006683F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37164429291C4561006683F3 /* ContentView.swift */; };
 		3716442C291C4562006683F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3716442B291C4562006683F3 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		370E22792920125D007235DC /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		37164424291C4561006683F3 /* iHogApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHogApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37164427291C4561006683F3 /* iHogAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogAppApp.swift; sourceTree = "<group>"; };
 		37164429291C4561006683F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */,
+				370E22792920125D007235DC /* AppInfo.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				37164431291C4562006683F3 /* Persistence.swift in Sources */,
 				3716442A291C4561006683F3 /* ContentView.swift in Sources */,
 				37164428291C4561006683F3 /* iHogAppApp.swift in Sources */,
+				370E227A2920125D007235DC /* AppInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
