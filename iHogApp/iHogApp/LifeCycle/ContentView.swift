@@ -26,6 +26,7 @@ struct ContentView: View {
                         send: { .pressRow($0)}
                     )
             ) {
+                // -MARK: Hardware
                 Section {
                     NavigationLink(value: Routes.playback) {
                         RowWithIcon(labelText: "Playback", color: .teal, symbol: .sliderVertical3)
@@ -34,21 +35,46 @@ struct ContentView: View {
                         RowWithIcon(labelText: "Programmer", color: .teal, symbol: .cooktop)
                     }
                 }
+                // -MARK: Shows
                 Section {
                     Text("Shows")
                 }
+                // -MARK: Settings
                 Section {
                     NavigationLink(value: Routes.osc) {
                         RowWithIcon(labelText: "OSC Settings", color: .green, symbol: .wifi)
                     }
                     NavigationLink(value: Routes.programmerSettings) {
-                        RowWithIcon(labelText: "Programmer Settings", color: .purple, symbol: .cooktopFill)
+                        RowWithIcon(labelText: "Programmer Settings", color: .teal, symbol: .cooktopFill)
                     }
                     NavigationLink(value: Routes.showSettings) {
                         RowWithIcon(labelText: "Show Settings", color: .gray, symbol: .folder)
                     }
                 }
+                // -MARK: About
+                Section {
+                    NavigationLink(value: Routes.feedback) {
+                        RowWithIcon(labelText: "Request a feature", color: .blue, symbol: .lightbulb)
+                    }
+                    NavigationLink(value: Routes.feedback) {
+                        RowWithIcon(labelText: "Report a bug", color: .red, symbol: .ladybug)
+                    }
+                    Button {
+                        print("Request a review")
+                    } label: {
+                        RowWithIcon(labelText: "Rate and Review iHog", color: .yellow, symbol: .starFill)
+                    }
 
+                    Button {
+                        print("Share")
+                    } label: {
+                        RowWithIcon(labelText: "Share with a friend", color: .yellow, symbol: .squareAndArrowUp)
+                    }
+
+
+                }
+
+                // -Mark: Footer
                 VStack {
                     Text("App version: \(AppInfo.version) (\(AppInfo.buildNumber))")
                     Text("Made with ☕ in Austin")
