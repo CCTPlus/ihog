@@ -33,7 +33,10 @@ let package = Package(
     targets: [
         .target(name: "Analytics", dependencies: [.product(name: "TelemetryClient", package: "SwiftClient")]),
         .target(name: "Components", dependencies: [.product(name: "SFSafeSymbols", package: "SFSafeSymbols")]),
-        .target(name: "Frontpanel", dependencies: [.product(name: "ComposableArchitecture", package: "swift-composable-architecture")]),
+        .target(name: "Frontpanel", dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "SFSafeSymbols", package: "SFSafeSymbols")
+        ]),
         .target(name: "Utilities", dependencies: []),
         .target(
             name: "iHog",
