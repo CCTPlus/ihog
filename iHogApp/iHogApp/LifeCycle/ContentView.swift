@@ -11,6 +11,7 @@ import SwiftUI
 import CoreData
 import iHog
 import Components
+import Frontpanel
 import ComposableArchitecture
 
 struct ContentView: View {
@@ -88,7 +89,7 @@ struct ContentView: View {
         } detail: {
             switch viewStore.navLocation {
             case .programmer:
-                Text("Programmer")
+                FPProgrammerView()
             case .playback:
                 Text("Playback")
             case .osc:

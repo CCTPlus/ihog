@@ -1,5 +1,16 @@
 # Worklog
 
+## To do next time:
+
+- [ ] Figure out purple warnings
+- [ ] Connect TCA to button states on FP
+- [ ] Create a larger programming surface
+
+## Nov 15
+
+- Create keypad view to navigate from home to programmer hardware
+- Create an [idea log](./ideas.md)
+
 ## Nov 12
 
 - Worked on the front panel graphics

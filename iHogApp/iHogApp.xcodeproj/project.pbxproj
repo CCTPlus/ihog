@@ -19,6 +19,7 @@
 		37A57FCD291EAB6300AEDD9B /* Analytics in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FCC291EAB6300AEDD9B /* Analytics */; };
 		37A57FCF291EAB6300AEDD9B /* iHog in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FCE291EAB6300AEDD9B /* iHog */; };
 		37A57FD1291EAB6300AEDD9B /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = 37A57FD0291EAB6300AEDD9B /* Utilities */; };
+		37F01BF02924AB39007A34DA /* Frontpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 37F01BEF2924AB39007A34DA /* Frontpanel */; };
 		37F4D017291CB950004D900B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D016291CB950004D900B /* ComposableArchitecture */; };
 		37F4D01C291CBCD9004D900B /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01B291CBCD9004D900B /* TelemetryClient */; };
 		37F4D01F291CBD33004D900B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01E291CBD33004D900B /* RevenueCat */; };
@@ -47,6 +48,7 @@
 				3782AD0E291EF9C700CACAFA /* Components in Frameworks */,
 				37F4D017291CB950004D900B /* ComposableArchitecture in Frameworks */,
 				37A57FD1291EAB6300AEDD9B /* Utilities in Frameworks */,
+				37F01BF02924AB39007A34DA /* Frontpanel in Frameworks */,
 				37A57FCF291EAB6300AEDD9B /* iHog in Frameworks */,
 				3782AD0C291EF98500CACAFA /* SFSafeSymbols in Frameworks */,
 				37A57FCD291EAB6300AEDD9B /* Analytics in Frameworks */,
@@ -156,6 +158,7 @@
 				37A57FD0291EAB6300AEDD9B /* Utilities */,
 				3782AD0B291EF98500CACAFA /* SFSafeSymbols */,
 				3782AD0D291EF9C700CACAFA /* Components */,
+				37F01BEF2924AB39007A34DA /* Frontpanel */,
 			);
 			productName = iHogApp;
 			productReference = 37164424291C4561006683F3 /* iHogApp.app */;
@@ -481,6 +484,10 @@
 		37A57FD0291EAB6300AEDD9B /* Utilities */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Utilities;
+		};
+		37F01BEF2924AB39007A34DA /* Frontpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Frontpanel;
 		};
 		37F4D016291CB950004D900B /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
