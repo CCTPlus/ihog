@@ -2,6 +2,8 @@
 
 ## Nov 12
 
+- Worked on the front panel graphics
+
 ## Nov 11
 
 - Created a component for row list with icon
