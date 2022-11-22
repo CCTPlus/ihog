@@ -1,10 +1,14 @@
 # Worklog
 
-## To do next time:
+## To dos:
 
-- [ ] Figure out purple warnings
 - [ ] Connect TCA to button states on FP
 - [ ] Create a larger programming surface
+- [ ] "Shows"
+
+## Nov 22
+
+- Purple warnings fixed. Frame was going negative for some reason
 
 ## Nov 15
 
