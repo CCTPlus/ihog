@@ -19,8 +19,8 @@ struct Keypad: View {
                     FPButton(label: "-")
                     FPButton(label: "+")
                 }.frame(
-                    width: (geo.size.width-3)/4,
-                    height: (geo.size.width-3)/4)
+                    width: abs((geo.size.width-3)/4),
+                    height: abs((geo.size.width-3)/4))
                 .background(Color.gray)
                 GridRow {
                     FPButton(label: "7")
@@ -28,8 +28,8 @@ struct Keypad: View {
                     FPButton(label: "9")
                     FPButton(label: "Thru")
                 }.frame(
-                    width: (geo.size.width-3)/4,
-                    height: (geo.size.width-3)/4)
+                    width: abs((geo.size.width-3)/4),
+                    height: abs((geo.size.width-3)/4))
                 .background(Color.gray)
 
                 GridRow {
@@ -38,8 +38,8 @@ struct Keypad: View {
                     FPButton(label: "6")
                     FPButton(label: "Full")
                 }.frame(
-                    width: (geo.size.width-3)/4,
-                    height: (geo.size.width-3)/4)
+                    width: abs((geo.size.width-3)/4),
+                    height: abs((geo.size.width-3)/4))
                 .background(Color.gray)
                 GridRow {
                     FPButton(label: "1")
@@ -47,8 +47,8 @@ struct Keypad: View {
                     FPButton(label: "3")
                     FPButton(label: "@")
                 }.frame(
-                    width: (geo.size.width-3)/4,
-                    height: (geo.size.width-3)/4)
+                    width: abs((geo.size.width-3)/4),
+                    height: abs((geo.size.width-3)/4))
                 .background(Color.gray)
 
                 GridRow {
@@ -57,12 +57,12 @@ struct Keypad: View {
                     FPButton(label: "Enter")
                         .gridCellColumns(2)
                         .frame(
-                            width: (geo.size.width-3)/2,
-                            height: (geo.size.width-3)/4)
+                            width: abs((geo.size.width-3)/2),
+                            height: abs((geo.size.width-3)/4))
                         .background(Color.gray)
                 }.frame(
-                    width: (geo.size.width-3)/4,
-                    height: (geo.size.width-3)/4)
+                    width: abs((geo.size.width-3)/4),
+                    height: abs((geo.size.width-3)/4))
                 .background(Color.gray)
 
             }

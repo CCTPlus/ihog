@@ -89,9 +89,9 @@ struct SmallScreenProgrammer: View {
                         }
                     }
                 }
-                .frame(height: geo.size.height - 50 - (((geo.size.width-3)/4)*5))
+                .frame(height: abs(geo.size.height - 50 - (((geo.size.width-3)/4)*5)))
                 Keypad()
-                    .frame(height: ((geo.size.width-3)/4)*5)
+                    .frame(height: abs(((geo.size.width-3)/4)*5))
             }
         }
     }
