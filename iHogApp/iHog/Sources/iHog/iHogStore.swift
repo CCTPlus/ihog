@@ -31,6 +31,7 @@ public struct iHog: ReducerProtocol {
     public enum Action: Equatable {
         case navRowPressed(Routes?)
         case addShowButtonTapped
+        case typingName(String)
     }
 
     public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
@@ -39,7 +40,10 @@ public struct iHog: ReducerProtocol {
             state.navLocation = newRoute
             return .none
         case .addShowButtonTapped:
-            state.isAddingShow = true
+            state.isAddingShow = !state.isAddingShow
+            return .none
+        case .typingName(let showName):
+            state.showName = showName
             return .none
         }
     }

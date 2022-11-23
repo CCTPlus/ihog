@@ -50,6 +50,11 @@ struct ContentView: View {
                                 .foregroundColor(.accentColor)
                         }.buttonStyle(.plain)
 
+                    }.sheet(isPresented: viewStore.binding(get: \.isAddingShow, send: { .addShowButtonTapped }())) {
+                        TextField("Show name",
+                                  text: viewStore.binding(
+                                    get: \.showName,
+                                    send: { .typingName($0)}))
                     }
                 }
                 // -MARK: Settings
