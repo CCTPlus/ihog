@@ -10,7 +10,8 @@
 import SFSafeSymbols
 import SwiftUI
 
-public struct RowWithIcon: View {
+///Row with an icon and text
+public struct Sydney: View {
     var labelText: String
     var color: Color
     var symbol: SFSymbol
@@ -23,13 +24,7 @@ public struct RowWithIcon: View {
 
     public var body: some View {
         HStack {
-            color.frame(width: 30, height: 30)
-                .cornerRadius(5.0)
-                .overlay {
-                    Image(systemSymbol: symbol)
-                        .foregroundColor(.white)
-                }
-                .padding(.trailing)
+            RowIcon(color: color, symbol: symbol)
             Text(labelText)
             Spacer()
         }
@@ -38,6 +33,6 @@ public struct RowWithIcon: View {
 
 struct RowWithIcon_Previews: PreviewProvider {
     static var previews: some View {
-        RowWithIcon(labelText: "Test label", color: .gray, symbol: .star)
+        Sydney(labelText: "Test label", color: .gray, symbol: .star)
     }
 }

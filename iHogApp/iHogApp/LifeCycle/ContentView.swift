@@ -13,96 +13,75 @@ import CoreData
 import Frontpanel
 import SwiftUI
 import iHog
+import SFSafeSymbols
 
 struct ContentView: View {
     let store: StoreOf<iHog>
 
     @State private var nav: Routes = .osc
-    var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            NavigationSplitView {
-                List(
-                    selection:
-                        viewStore.binding(
-                            get: \.navLocation,
-                            send: { .navRowPressed($0) }
-                        )
-                ) {
-                    // -MARK: Hardware
-                    Section {
-                        NavigationLink(value: Routes.playback) {
-                            RowWithIcon(
-                                labelText: "Playback",
-                                color: .teal,
-                                symbol: .sliderVertical3
-                            )
-                        }
-                        NavigationLink(value: Routes.programmer) {
-                            RowWithIcon(
-                                labelText: "Programmer",
-                                color: .teal,
-                                symbol: .cooktop
-                            )
-                        }
+    var body: some View { WithViewStore(self.store, observe: { $0 }) { viewStore in
+        NavigationSplitView {
+            List(
+                selection:
+                    viewStore.binding(
+                        get: \.navLocation,
+                        send: { .navRowPressed($0)}
+                    )
+            ) {
+                // -MARK: Hardware
+                Section {
+                    NavigationLink(value: Routes.playback) {
+                        Sydney(labelText: "Playback", color: .teal, symbol: .sliderVertical3)
                     }
-                    // -MARK: Shows
-                    Section {
-                        Text("Shows")
+                    NavigationLink(value: Routes.programmer) {
+                        Sydney(labelText: "Programmer", color: .teal, symbol: .cooktop)
                     }
-                    // -MARK: Settings
-                    Section {
-                        NavigationLink(value: Routes.osc) {
-                            RowWithIcon(labelText: "OSC Settings", color: .green, symbol: .wifi)
-                        }
-                        NavigationLink(value: Routes.programmerSettings) {
-                            RowWithIcon(
-                                labelText: "Programmer Settings",
-                                color: .teal,
-                                symbol: .cooktopFill
-                            )
-                        }
-                        NavigationLink(value: Routes.showSettings) {
-                            RowWithIcon(labelText: "Show Settings", color: .gray, symbol: .folder)
-                        }
-                    }
-                    // -MARK: About
-                    Section {
-                        NavigationLink(value: Routes.feedback) {
-                            RowWithIcon(
-                                labelText: "Request a feature",
-                                color: .blue,
-                                symbol: .lightbulb
-                            )
-                        }
-                        NavigationLink(value: Routes.feedback) {
-                            RowWithIcon(labelText: "Report a bug", color: .red, symbol: .ladybug)
-                        }
+                }
+                // -MARK: Shows
+                Section {
+                    HStack {
+                        RowIcon(color: .gray, symbol: .folder)
+                        Text("Add Show")
+                        Spacer()
                         Button {
-                            print("Request a review")
+                            viewStore.send(.addShowButtonTapped)
                         } label: {
-                            RowWithIcon(
-                                labelText: "Rate and Review iHog",
-                                color: .yellow,
-                                symbol: .starFill
-                            )
-                        }
-
-                        Button {
-                            print("Share")
-                        } label: {
-                            RowWithIcon(
-                                labelText: "Share with a friend",
-                                color: .yellow,
-                                symbol: .squareAndArrowUp
-                            )
-                        }
+                            Image(systemSymbol: .plusCircle)
+                                .foregroundColor(.accentColor)
+                        }.buttonStyle(.plain)
 
                     }
+                }
+                // -MARK: Settings
+                Section {
+                    NavigationLink(value: Routes.osc) {
+                        Sydney(labelText: "OSC Settings", color: .green, symbol: .wifi)
+                    }
+                    NavigationLink(value: Routes.programmerSettings) {
+                        Sydney(labelText: "Programmer Settings", color: .teal, symbol: .cooktopFill)
+                    }
+                    NavigationLink(value: Routes.showSettings) {
+                        Sydney(labelText: "Show Settings", color: .gray, symbol: .folder)
+                    }
+                }
+                // -MARK: About
+                Section {
+                    NavigationLink(value: Routes.feedback) {
+                        Sydney(labelText: "Request a feature", color: .blue, symbol: .lightbulb)
+                    }
+                    NavigationLink(value: Routes.feedback) {
+                        Sydney(labelText: "Report a bug", color: .red, symbol: .ladybug)
+                    }
+                    Button {
+                        print("Request a review")
+                    } label: {
+                        Sydney(labelText: "Rate and Review iHog", color: .yellow, symbol: .starFill)
+                    }
 
-                    // -Mark: Footer
-                    VStack {
-                        Text("App version: \(AppInfo.version) (\(AppInfo.buildNumber))")
-                        Text("Made with ☕ in Austin")
+                    Button {
+                        print("Share")
+                    } label: {
+                        Sydney(labelText: "Share with a friend", color: .yellow, symbol: .squareAndArrowUp)
                     }
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
