@@ -19,32 +19,30 @@ public struct iHog: ReducerProtocol {
     }
 
     public struct State: Equatable {
-        public var navLocation: Routes? = nil
-        public var isAddingShow = false
-        public var showName = "New Show"
+        @BindableState public var navLocation: Routes? = nil
+        @BindableState public var isAddingShow = false
+        @BindableState public var showName = "New Show"
 
         public init(navLocation: Routes? = nil) {
             self.navLocation = navLocation
         }
     }
 
-    public enum Action: Equatable {
-        case navRowPressed(Routes?)
+    public enum Action: BindableAction {
+        case binding(BindingAction<State>)
         case addShowButtonTapped
-        case typingName(String)
     }
 
-    public func reduce(into state: inout State, action: Action) -> Effect<Action, Never> {
-        switch action {
-        case .navRowPressed(let newRoute):
-            state.navLocation = newRoute
-            return .none
-        case .addShowButtonTapped:
-            state.isAddingShow = !state.isAddingShow
-            return .none
-        case .typingName(let showName):
-            state.showName = showName
-            return .none
+    public var body: some ReducerProtocol<State, Action> {
+        BindingReducer()
+        Reduce { state, action in
+            switch action {
+            case .addShowButtonTapped:
+                state.isAddingShow = true
+                return .none
+            default:
+                return .none
+            }
         }
     }
 }

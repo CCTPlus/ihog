@@ -22,11 +22,7 @@ struct ContentView: View {
     var body: some View { WithViewStore(self.store, observe: { $0 }) { viewStore in
         NavigationSplitView {
             List(
-                selection:
-                    viewStore.binding(
-                        get: \.navLocation,
-                        send: { .navRowPressed($0)}
-                    )
+                selection: viewStore.binding(\.$navLocation)
             ) {
                 // -MARK: Hardware
                 Section {
@@ -50,11 +46,9 @@ struct ContentView: View {
                                 .foregroundColor(.accentColor)
                         }.buttonStyle(.plain)
 
-                    }.sheet(isPresented: viewStore.binding(get: \.isAddingShow, send: { .addShowButtonTapped }())) {
+                    }.sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
                         TextField("Show name",
-                                  text: viewStore.binding(
-                                    get: \.showName,
-                                    send: { .typingName($0)}))
+                                  text: viewStore.binding(\.$showName))
                     }
                 }
                 // -MARK: Settings
