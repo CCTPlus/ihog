@@ -11,11 +11,11 @@
 //
 //
 
-import SwiftUI
 import Analytics
+import ComposableArchitecture
+import SwiftUI
 import Utilities
 import iHog
-import ComposableArchitecture
 
 @main
 struct iHogAppApp: App {

@@ -1,6 +1,6 @@
 // SmallScreenProgrammer.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
@@ -21,20 +21,20 @@ struct SmallScreenProgrammer: View {
                         HStack(spacing: 1) {
                             FPButton(label: "High\nLight")
                                 .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/4
+                                    width: geo.size.width / 4,
+                                    height: geo.size.width / 4
                                 )
                                 .background(Color.gray)
                             FPButton(label: "Blind")
                                 .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/4
+                                    width: geo.size.width / 4,
+                                    height: geo.size.width / 4
                                 )
                                 .background(Color.gray)
                             FPButton(label: "Clear")
                                 .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/4
+                                    width: geo.size.width / 4,
+                                    height: geo.size.width / 4
                                 )
                                 .background(Color.gray)
                         }
@@ -43,55 +43,55 @@ struct SmallScreenProgrammer: View {
                                 label: "",
                                 icon: Image(systemSymbol: .dialHigh)
                             )
-                                .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/6
-                                )
-                                .background(Color.gray)
+                            .frame(
+                                width: geo.size.width / 4,
+                                height: geo.size.width / 6
+                            )
+                            .background(Color.gray)
                             FPButton(
                                 label: "",
                                 icon: Image(systemSymbol: .rectangle3Group)
                             )
-                                .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/6
-                                )
-                                .background(Color.gray)
+                            .frame(
+                                width: geo.size.width / 4,
+                                height: geo.size.width / 6
+                            )
+                            .background(Color.gray)
                             FPButton(
                                 label: "",
                                 icon: Image(systemSymbol: .squareGrid3x3)
                             )
-                                .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/6
-                                )
-                                .background(Color.gray)
+                            .frame(
+                                width: geo.size.width / 4,
+                                height: geo.size.width / 6
+                            )
+                            .background(Color.gray)
                         }
                         HStack(spacing: 1) {
                             FPButton(label: "Back")
                                 .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/4
+                                    width: geo.size.width / 4,
+                                    height: geo.size.width / 4
                                 )
                                 .background(Color.gray)
                             FPButton(label: "All")
                                 .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/4
+                                    width: geo.size.width / 4,
+                                    height: geo.size.width / 4
                                 )
                                 .background(Color.gray)
                             FPButton(label: "Next")
                                 .frame(
-                                    width: geo.size.width/4,
-                                    height: geo.size.width/4
+                                    width: geo.size.width / 4,
+                                    height: geo.size.width / 4
                                 )
                                 .background(Color.gray)
                         }
                     }
                 }
-                .frame(height: abs(geo.size.height - 50 - (((geo.size.width-3)/4)*5)))
+                .frame(height: abs(geo.size.height - 50 - (((geo.size.width - 3) / 4) * 5)))
                 Keypad()
-                    .frame(height: abs(((geo.size.width-3)/4)*5))
+                    .frame(height: abs(((geo.size.width - 3) / 4) * 5))
             }
         }
     }

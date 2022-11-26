@@ -1,14 +1,14 @@
 // FPButton.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
 //              github	 @heyjaywilson
 //              website  cctplus.dev
 
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 struct FPButton: View {
     var label: String
@@ -18,7 +18,7 @@ struct FPButton: View {
         Button {
             print(label)
         } label: {
-            if let icon {
+            if let icon = icon {
                 icon
                     .resizable()
                     .frame(width: 32, height: 32)
@@ -40,6 +40,7 @@ struct FPButton_Previews: PreviewProvider {
             FPButton(label: "", icon: Image(systemSymbol: .squareGrid3x3))
             FPButton(label: "Release")
             FPButton(label: "Release")
-        }.background(Color.gray)
+        }
+        .background(Color.gray)
     }
 }

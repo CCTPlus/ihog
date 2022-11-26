@@ -1,6 +1,6 @@
 // EnvironmentVariables.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
@@ -19,8 +19,6 @@ public struct EnvVar {
     }
 
     public var wrappedValue: String {
-        get {
-            return ProcessInfo.processInfo.environment[name] ?? defaultValue
-        }
+        return ProcessInfo.processInfo.environment[name] ?? defaultValue
     }
 }

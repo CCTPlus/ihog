@@ -1,6 +1,6 @@
 // ThreeByTwo.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
@@ -20,17 +20,21 @@ struct ThreeByTwo: View {
                     ForEach(buttonRow1, id: \.self) { button in
                         FPButton(label: button)
                     }
-                }.frame(
-                    width: geo.size.width/4,
-                    height: geo.size.width/4)
+                }
+                .frame(
+                    width: geo.size.width / 4,
+                    height: geo.size.width / 4
+                )
                 .background(Color.gray)
                 GridRow {
                     ForEach(buttonRow2, id: \.self) { button in
                         FPButton(label: button)
                     }
-                }.frame(
-                    width: geo.size.width/4,
-                    height: geo.size.width/4)
+                }
+                .frame(
+                    width: geo.size.width / 4,
+                    height: geo.size.width / 4
+                )
                 .background(Color.gray)
             }
         }
@@ -41,6 +45,7 @@ struct ThreeByTwo_Previews: PreviewProvider {
     static var previews: some View {
         ThreeByTwo(
             buttonRow1: ["Live", "Scene", "Cue"],
-            buttonRow2: ["Macro", "List", "Page"])
+            buttonRow2: ["Macro", "List", "Page"]
+        )
     }
 }
