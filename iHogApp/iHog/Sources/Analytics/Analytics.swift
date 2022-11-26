@@ -1,6 +1,6 @@
 // Analytics.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
@@ -9,6 +9,7 @@
 
 import Foundation
 import TelemetryClient
+
 public class Analytics {
 
     private let rcID: String = ""

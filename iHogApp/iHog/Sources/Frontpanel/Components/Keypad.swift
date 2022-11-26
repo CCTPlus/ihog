@@ -1,6 +1,6 @@
 // Keypad.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
@@ -18,53 +18,61 @@ struct Keypad: View {
                     FPButton(label: "/")
                     FPButton(label: "-")
                     FPButton(label: "+")
-                }.frame(
-                    width: abs((geo.size.width-3)/4),
-                    height: abs((geo.size.width-3)/4))
+                }
+                .frame(
+                    width: abs((geo.size.width - 3) / 4),
+                    height: abs((geo.size.width - 3) / 4)
+                )
                 .background(Color.gray)
                 GridRow {
                     FPButton(label: "7")
                     FPButton(label: "8")
                     FPButton(label: "9")
                     FPButton(label: "Thru")
-                }.frame(
-                    width: abs((geo.size.width-3)/4),
-                    height: abs((geo.size.width-3)/4))
+                }
+                .frame(
+                    width: abs((geo.size.width - 3) / 4),
+                    height: abs((geo.size.width - 3) / 4)
+                )
                 .background(Color.gray)
-
                 GridRow {
                     FPButton(label: "4")
                     FPButton(label: "5")
                     FPButton(label: "6")
                     FPButton(label: "Full")
-                }.frame(
-                    width: abs((geo.size.width-3)/4),
-                    height: abs((geo.size.width-3)/4))
+                }
+                .frame(
+                    width: abs((geo.size.width - 3) / 4),
+                    height: abs((geo.size.width - 3) / 4)
+                )
                 .background(Color.gray)
                 GridRow {
                     FPButton(label: "1")
                     FPButton(label: "2")
                     FPButton(label: "3")
                     FPButton(label: "@")
-                }.frame(
-                    width: abs((geo.size.width-3)/4),
-                    height: abs((geo.size.width-3)/4))
+                }
+                .frame(
+                    width: abs((geo.size.width - 3) / 4),
+                    height: abs((geo.size.width - 3) / 4)
+                )
                 .background(Color.gray)
-
                 GridRow {
                     FPButton(label: "0")
                     FPButton(label: ".")
                     FPButton(label: "Enter")
                         .gridCellColumns(2)
                         .frame(
-                            width: abs((geo.size.width-3)/2),
-                            height: abs((geo.size.width-3)/4))
+                            width: abs((geo.size.width - 3) / 2),
+                            height: abs((geo.size.width - 3) / 4)
+                        )
                         .background(Color.gray)
-                }.frame(
-                    width: abs((geo.size.width-3)/4),
-                    height: abs((geo.size.width-3)/4))
+                }
+                .frame(
+                    width: abs((geo.size.width - 3) / 4),
+                    height: abs((geo.size.width - 3) / 4)
+                )
                 .background(Color.gray)
-
             }
         }
     }

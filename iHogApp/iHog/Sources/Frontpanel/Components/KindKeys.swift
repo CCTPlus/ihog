@@ -1,6 +1,6 @@
 // KindKeys.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
@@ -18,19 +18,23 @@ struct KindKeys: View {
                     FPButton(label: "Position")
                     FPButton(label: "Colour")
                     FPButton(label: "Beam")
-                }.frame(
-                    width: geo.size.width/4,
-                    height: geo.size.width/4)
-                    .background(Color.gray)
+                }
+                .frame(
+                    width: geo.size.width / 4,
+                    height: geo.size.width / 4
+                )
+                .background(Color.gray)
                 GridRow {
                     FPButton(label: "Effect")
                     FPButton(label: "Time")
                     FPButton(label: "Group")
                     FPButton(label: "Fixture")
-                }.frame(
-                    width: geo.size.width/4,
-                    height: geo.size.width/4)
-                    .background(Color.gray)
+                }
+                .frame(
+                    width: geo.size.width / 4,
+                    height: geo.size.width / 4
+                )
+                .background(Color.gray)
             }
         }
     }

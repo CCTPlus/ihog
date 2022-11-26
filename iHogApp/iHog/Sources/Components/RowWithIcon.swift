@@ -1,14 +1,14 @@
 // RowWithIcon.swift
-// 
-// 
+//
+//
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
 //              twitter  @heyjaywilson
 //              github	 @heyjaywilson
 //              website  cctplus.dev
 
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 public struct RowWithIcon: View {
     var labelText: String
@@ -20,7 +20,7 @@ public struct RowWithIcon: View {
         self.color = color
         self.symbol = symbol
     }
-    
+
     public var body: some View {
         HStack {
             color.frame(width: 30, height: 30)

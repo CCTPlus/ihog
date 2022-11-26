@@ -143,6 +143,7 @@
 				37164420291C4561006683F3 /* Sources */,
 				37164421291C4561006683F3 /* Frameworks */,
 				37164422291C4561006683F3 /* Resources */,
+				6936B95D29327BAA0053CF96 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -215,6 +216,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6936B95D29327BAA0053CF96 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swift-format >/dev/null; then\n    swift-format lint -r ${PROJECT_DIR} --configuration ~/Developer/ihog/.swift-format.json\n    exit 0\nelse\n    echo \"warning: swift-format not installed\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		37164420291C4561006683F3 /* Sources */ = {

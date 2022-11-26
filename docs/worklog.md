@@ -1,14 +1,15 @@
 # Worklog
 
-## To dos:
+## Nov 26
 
-- [ ] Connect TCA to button states on FP
-- [ ] Create a larger programming surface
-- [ ] "Shows"
+- Swift-Format
 
 ## Nov 22
 
+- Created show button form
+- Created a new RowIcon
 - Purple warnings fixed. Frame was going negative for some reason
+- Moved project management to Projects on GitHub
 
 ## Nov 15
 

@@ -10,6 +10,8 @@
 import Foundation
 
 enum AppInfo {
-    static let buildNumber: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "000"
-    static let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "v2022.11"
+    static let buildNumber: String =
+        Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "000"
+    static let version =
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "v2022.11"
 }
