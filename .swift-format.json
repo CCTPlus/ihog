@@ -7,9 +7,9 @@
   },
   "indentConditionalCompilationBlocks" : true,
   "indentSwitchCaseLabels" : true,
-  "lineBreakAroundMultilineExpressionChainComponents" : false,
+  "lineBreakAroundMultilineExpressionChainComponents" : true,
   "lineBreakBeforeControlFlowKeywords" : false,
-  "lineBreakBeforeEachArgument" : false,
+  "lineBreakBeforeEachArgument" : true,
   "lineBreakBeforeEachGenericRequirement" : false,
   "lineLength" : 100,
   "maximumBlankLines" : 1,
@@ -49,7 +49,7 @@
     "UseSynthesizedInitializer" : true,
     "UseTripleSlashForDocumentationComments" : true,
     "UseWhereClausesInForLoops" : false,
-    "ValidateDocumentationComments" : false
+    "ValidateDocumentationComments" : true
   },
   "tabWidth" : 4,
   "version" : 1
