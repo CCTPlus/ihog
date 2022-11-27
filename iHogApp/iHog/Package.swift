@@ -43,19 +43,30 @@ let package = Package(
         ),
     ],
     targets: [
-        .target(name: "Analytics", dependencies: [.product(name: "TelemetryClient", package: "SwiftClient")]),
-        .target(name: "Components", dependencies: [.product(name: "SFSafeSymbols", package: "SFSafeSymbols")]),
+        .target(
+            name: "Analytics",
+            dependencies: [.product(name: "TelemetryClient", package: "SwiftClient")]
+        ),
+        .target(
+            name: "Components",
+            dependencies: [.product(name: "SFSafeSymbols", package: "SFSafeSymbols")]
+        ),
         .target(name: "DataStore", dependencies: []),
-        .target(name: "Frontpanel", dependencies: [
-            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-            .product(name: "SFSafeSymbols", package: "SFSafeSymbols")
-        ]),
+        .target(
+            name: "Frontpanel",
+            dependencies: [
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            ]
+        ),
         .target(name: "Utilities", dependencies: []),
         .target(
             name: "iHog",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                "DataStore"]),
+                "DataStore",
+            ]
+        ),
         .testTarget(
             name: "iHogTests",
             dependencies: [

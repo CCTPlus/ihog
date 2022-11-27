@@ -7,8 +7,8 @@
 //              github     @heyjaywilson
 //              website  cctplus.dev
 
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 ///Row with an icon and text
 public struct RowIcon: View {

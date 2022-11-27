@@ -8,7 +8,6 @@
 //              website  cctplus.dev
 
 import ComposableArchitecture
-
 import DataStore
 
 public struct iHog: ReducerProtocol {
@@ -37,11 +36,11 @@ public struct iHog: ReducerProtocol {
         BindingReducer()
         Reduce { state, action in
             switch action {
-            case .addShowButtonTapped:
-                state.isAddingShow = true
-                return .none
-            default:
-                return .none
+                case .addShowButtonTapped:
+                    state.isAddingShow = true
+                    return .none
+                default:
+                    return .none
             }
         }
     }

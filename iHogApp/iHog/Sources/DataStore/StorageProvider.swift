@@ -5,12 +5,12 @@
 //              github     @heyjaywilson
 //              website  cctplus.dev
 
-import Foundation
 import CoreData
+import Foundation
 
 public class StorageProvider {
     let persistentContainer: NSPersistentCloudKitContainer
-    
+
     public static let shared = StorageProvider()
 
     init() {
@@ -21,5 +21,6 @@ public class StorageProvider {
                 fatalError("Cloudkit store faileddddd with error: \(error)")
             }
         }
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
     }
 }
