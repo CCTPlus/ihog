@@ -11,6 +11,7 @@ import Components
 import ComposableArchitecture
 import Frontpanel
 import SFSafeSymbols
+import Show
 import SwiftUI
 import iHog
 
@@ -49,7 +50,6 @@ struct ContentView: View {
                                     .foregroundColor(.accentColor)
                             }
                             .buttonStyle(.plain)
-
                         }
                         .sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
                             VStack {
@@ -62,11 +62,18 @@ struct ContentView: View {
                                 } label: {
                                     Text("SAVE")
                                 }
-
                             }
                         }
                         ForEach(viewStore.shows) { show in
-                            Text(show.name)
+                            Button {
+                                viewStore.send(.showTapped(show))
+                                viewStore.send(.show(.showSelected(show)))
+                            } label: {
+                                HStack {
+                                    RowIcon(color: .gray, symbol: SFSymbol(rawValue: show.icon))
+                                    Text(show.name)
+                                }
+                            }
                         }
                     }
                     // -MARK: Settings
@@ -102,7 +109,6 @@ struct ContentView: View {
                                 symbol: .starFill
                             )
                         }
-
                         Button {
                             print("Share")
                         } label: {
@@ -129,11 +135,17 @@ struct ContentView: View {
                         Text("Playback")
                     case .osc:
                         Text("OSC")
+                    case .show:
+                        ShowView(
+                            store: store.scope(
+                                state: \.showState,
+                                action: iHog.Action.show
+                            )
+                        )
                     default:
                         Text("Hello")
                 }
             }
-
         }
         .debug()
     }

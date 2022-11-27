@@ -10,6 +10,7 @@
 import ComposableArchitecture
 import DataStore
 import Foundation
+import Show
 
 public struct iHog: ReducerProtocol {
     private var showManager: ShowManager
@@ -22,10 +23,14 @@ public struct iHog: ReducerProtocol {
         @BindableState public var navLocation: Routes? = nil
         @BindableState public var isAddingShow = false
         @BindableState public var showName = "New Show"
+
         public var shows: [Show] = []
+        public var showState: ShowStore.State
+        public var selectedShow: Show? = nil
 
         public init(navLocation: Routes? = nil) {
             self.navLocation = navLocation
+            self.showState = ShowStore.State()
         }
     }
 
@@ -36,12 +41,24 @@ public struct iHog: ReducerProtocol {
         case saveShowResponse(TaskResult<Show>)
         case fetchShows
         case fetchShowsResponse(TaskResult<[Show]>)
+        case showTapped(Show)
+        case show(ShowStore.Action)
     }
 
     public var body: some ReducerProtocol<State, Action> {
         BindingReducer()
         Reduce { state, action in
             switch action {
+                case .show(let showAction):
+                    switch showAction {
+                        case .showSelected(let show):
+                            state.showState.selectedShow = show
+                    }
+                    return .none
+                case .showTapped(let selectedShow):
+                    state.navLocation = .show
+                    state.selectedShow = selectedShow
+                    return .none
                 case .fetchShows:
                     return .task { [] in
                         .fetchShowsResponse(

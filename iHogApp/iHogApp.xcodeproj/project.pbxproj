@@ -22,6 +22,7 @@
 		37F4D017291CB950004D900B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D016291CB950004D900B /* ComposableArchitecture */; };
 		37F4D01C291CBCD9004D900B /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01B291CBCD9004D900B /* TelemetryClient */; };
 		37F4D01F291CBD33004D900B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 37F4D01E291CBD33004D900B /* RevenueCat */; };
+		694F3F152934229100E56D3B /* Show in Frameworks */ = {isa = PBXBuildFile; productRef = 694F3F142934229100E56D3B /* Show */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 				37A57FCF291EAB6300AEDD9B /* iHog in Frameworks */,
 				3782AD0C291EF98500CACAFA /* SFSafeSymbols in Frameworks */,
 				37A57FCD291EAB6300AEDD9B /* Analytics in Frameworks */,
+				694F3F152934229100E56D3B /* Show in Frameworks */,
 				37F4D01C291CBCD9004D900B /* TelemetryClient in Frameworks */,
 				37F4D01F291CBD33004D900B /* RevenueCat in Frameworks */,
 			);
@@ -148,6 +150,7 @@
 				3782AD0B291EF98500CACAFA /* SFSafeSymbols */,
 				3782AD0D291EF9C700CACAFA /* Components */,
 				37F01BEF2924AB39007A34DA /* Frontpanel */,
+				694F3F142934229100E56D3B /* Show */,
 			);
 			productName = iHogApp;
 			productReference = 37164424291C4561006683F3 /* iHogApp.app */;
@@ -514,6 +517,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 37F4D01D291CBD33004D900B /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
+		};
+		694F3F142934229100E56D3B /* Show */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Show;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

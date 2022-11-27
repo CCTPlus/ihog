@@ -16,4 +16,5 @@ public enum Routes {
     case showSettings
     case programmerSettings
     case feedback
+    case show
 }

@@ -27,6 +27,10 @@ let package = Package(
             targets: ["iHog"]
         ),
         .library(
+            name: "Show",
+            targets: ["Show"]
+        ),
+        .library(
             name: "Utilities",
             targets: ["Utilities"]
         ),
@@ -67,10 +71,19 @@ let package = Package(
         ),
         .target(name: "Utilities", dependencies: []),
         .target(
+            name: "Show",
+            dependencies: [
+                "DataStore",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            ]
+        ),
+        .target(
             name: "iHog",
             dependencies: [
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 "DataStore",
+                "Show",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .testTarget(
