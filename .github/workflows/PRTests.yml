@@ -1,0 +1,9 @@
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Danger Swift
+    steps:
+      - uses: actions/checkout@v1
+      - name: Danger
+        uses: danger/swift@3.13.0
