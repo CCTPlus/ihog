@@ -25,3 +25,6 @@ if (additions > bigPRThreshold) {
 if (additions < bigPRThreshold) {
   fail("PR IS TOO SMALL")
 }
+if (bodyText.count == 0) {
+  fail("Give a description to the PR")
+}
