@@ -15,6 +15,10 @@ let package = Package(
             targets: ["Components"]
         ),
         .library(
+            name: "DataStore",
+            targets: ["DataStore"]
+        ),
+        .library(
             name: "Frontpanel",
             targets: ["Frontpanel"]
         ),
@@ -48,6 +52,13 @@ let package = Package(
             dependencies: [.product(name: "SFSafeSymbols", package: "SFSafeSymbols")]
         ),
         .target(
+            name: "DataStore",
+            dependencies: [
+                "Analytics",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .target(
             name: "Frontpanel",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -58,7 +69,8 @@ let package = Package(
         .target(
             name: "iHog",
             dependencies: [
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                "DataStore",
             ]
         ),
         .testTarget(

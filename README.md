@@ -43,4 +43,10 @@ These are third party dependencies that are used in the app. @heyjaywilson has m
 - [swift-format](https://github.com/apple/swift-format)
 ## Twitch Redemptions
 
+### Comments
+
 - MikaelaCaron Nov 8 2022
+
+### Name Redemptions
+
+- CocoaType: RowWithIcon = Sydney

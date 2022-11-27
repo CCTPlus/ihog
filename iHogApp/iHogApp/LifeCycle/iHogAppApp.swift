@@ -21,7 +21,6 @@ import iHog
 struct iHogAppApp: App {
     @EnvVar(name: EnvVarNames.telemetryDeck) var telemetryDeckAPI: String
 
-    let persistenceController = PersistenceController.shared
     let analytics = Analytics.shared
 
     init() {

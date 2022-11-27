@@ -9,8 +9,8 @@
 
 import Components
 import ComposableArchitecture
-import CoreData
 import Frontpanel
+import SFSafeSymbols
 import SwiftUI
 import iHog
 
@@ -22,65 +22,81 @@ struct ContentView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             NavigationSplitView {
                 List(
-                    selection:
-                        viewStore.binding(
-                            get: \.navLocation,
-                            send: { .navRowPressed($0) }
-                        )
+                    selection: viewStore.binding(\.$navLocation)
                 ) {
                     // -MARK: Hardware
                     Section {
                         NavigationLink(value: Routes.playback) {
-                            RowWithIcon(
-                                labelText: "Playback",
-                                color: .teal,
-                                symbol: .sliderVertical3
-                            )
+                            Sydney(labelText: "Playback", color: .teal, symbol: .sliderVertical3)
                         }
                         NavigationLink(value: Routes.programmer) {
-                            RowWithIcon(
-                                labelText: "Programmer",
-                                color: .teal,
-                                symbol: .cooktop
-                            )
+                            Sydney(labelText: "Programmer", color: .teal, symbol: .cooktop)
                         }
+                    }
+                    .onAppear {
+                        viewStore.send(.fetchShows)
                     }
                     // -MARK: Shows
                     Section {
-                        Text("Shows")
+                        HStack {
+                            RowIcon(color: .gray, symbol: .folder)
+                            Text("Add Show")
+                            Spacer()
+                            Button {
+                                viewStore.send(.addShowButtonTapped)
+                            } label: {
+                                Image(systemSymbol: .plusCircle)
+                                    .foregroundColor(.accentColor)
+                            }
+                            .buttonStyle(.plain)
+
+                        }
+                        .sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
+                            VStack {
+                                TextField(
+                                    "Show name",
+                                    text: viewStore.binding(\.$showName)
+                                )
+                                Button {
+                                    viewStore.send(.saveButtonTapped(viewStore.showName))
+                                } label: {
+                                    Text("SAVE")
+                                }
+
+                            }
+                        }
+                        ForEach(viewStore.shows) { show in
+                            Text(show.name)
+                        }
                     }
                     // -MARK: Settings
                     Section {
                         NavigationLink(value: Routes.osc) {
-                            RowWithIcon(labelText: "OSC Settings", color: .green, symbol: .wifi)
+                            Sydney(labelText: "OSC Settings", color: .green, symbol: .wifi)
                         }
                         NavigationLink(value: Routes.programmerSettings) {
-                            RowWithIcon(
+                            Sydney(
                                 labelText: "Programmer Settings",
                                 color: .teal,
                                 symbol: .cooktopFill
                             )
                         }
                         NavigationLink(value: Routes.showSettings) {
-                            RowWithIcon(labelText: "Show Settings", color: .gray, symbol: .folder)
+                            Sydney(labelText: "Show Settings", color: .gray, symbol: .folder)
                         }
                     }
                     // -MARK: About
                     Section {
                         NavigationLink(value: Routes.feedback) {
-                            RowWithIcon(
-                                labelText: "Request a feature",
-                                color: .blue,
-                                symbol: .lightbulb
-                            )
+                            Sydney(labelText: "Request a feature", color: .blue, symbol: .lightbulb)
                         }
                         NavigationLink(value: Routes.feedback) {
-                            RowWithIcon(labelText: "Report a bug", color: .red, symbol: .ladybug)
+                            Sydney(labelText: "Report a bug", color: .red, symbol: .ladybug)
                         }
                         Button {
                             print("Request a review")
                         } label: {
-                            RowWithIcon(
+                            Sydney(
                                 labelText: "Rate and Review iHog",
                                 color: .yellow,
                                 symbol: .starFill
@@ -90,28 +106,21 @@ struct ContentView: View {
                         Button {
                             print("Share")
                         } label: {
-                            RowWithIcon(
+                            Sydney(
                                 labelText: "Share with a friend",
                                 color: .yellow,
                                 symbol: .squareAndArrowUp
                             )
                         }
-
+                        .frame(maxWidth: .infinity)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                        .listRowBackground(Color.clear)
                     }
-
-                    // -Mark: Footer
-                    VStack {
-                        Text("App version: \(AppInfo.version) (\(AppInfo.buildNumber))")
-                        Text("Made with ☕ in Austin")
-                    }
-                    .frame(maxWidth: .infinity)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                    .listRowBackground(Color.clear)
+                    .listStyle(.insetGrouped)
+                    .navigationTitle("iHog")
+                    .navigationBarTitleDisplayMode(.large)
                 }
-                .listStyle(.insetGrouped)
-                .navigationTitle("iHog")
-                .navigationBarTitleDisplayMode(.large)
             } detail: {
                 switch viewStore.navLocation {
                     case .programmer:
