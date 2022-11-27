@@ -14,6 +14,19 @@ public class ShowManager {
 
     public init() {}
 
+    public func fetchShows() -> Result<[Show], Error> {
+        do {
+            let showEntities = try provider.fetchShows()
+            return Result.success(
+                showEntities.map { showEntity in
+                    Show(from: showEntity)
+                }
+            )
+        } catch {
+            return Result.failure(error)
+        }
+    }
+
     public func save(show: Show) -> Result<Show, Error> {
         let entity = ShowEntity(context: provider.persistentContainer.viewContext)
         entity.name = show.name

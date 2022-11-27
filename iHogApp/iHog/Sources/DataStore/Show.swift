@@ -9,7 +9,7 @@
 
 import Foundation
 
-public struct Show {
+public struct Show: Equatable, Identifiable {
     public var name: String
     public var dateCreated: Date
     public var dateLastModified: Date

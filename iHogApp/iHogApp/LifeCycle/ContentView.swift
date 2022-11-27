@@ -33,6 +33,9 @@ struct ContentView: View {
                             Sydney(labelText: "Programmer", color: .teal, symbol: .cooktop)
                         }
                     }
+                    .onAppear {
+                        viewStore.send(.fetchShows)
+                    }
                     // -MARK: Shows
                     Section {
                         HStack {
@@ -61,6 +64,9 @@ struct ContentView: View {
                                 }
 
                             }
+                        }
+                        ForEach(viewStore.shows) { show in
+                            Text(show.name)
                         }
                     }
                     // -MARK: Settings
@@ -129,6 +135,7 @@ struct ContentView: View {
             }
 
         }
+        .debug()
     }
 }
 

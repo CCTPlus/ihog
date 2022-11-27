@@ -9,7 +9,7 @@ import Analytics
 import CoreData
 import Foundation
 
-public class StorageProvider {
+class StorageProvider {
     let persistentContainer: NSPersistentCloudKitContainer
 
     public static let shared = StorageProvider()
