@@ -2,7 +2,7 @@ import Danger
 let danger = Danger()
 
 // MARK: Constants
-let hasChangelog = danger.git.modifiedFiles.contains("changelog.md")
+let hasChangelog = danger.git.modifiedFiles.contains("CHANGELOG.md")
 let bodyText = danger.github.pullRequest.body ?? ""
 let titleText = danger.github.pullRequest.title
 let isTrivial = (bodyText + titleText).contains("#trivial")
@@ -22,9 +22,6 @@ if (!hasChangelog && !isTrivial) {
 if (additions > bigPRThreshold) {
   warn("> Pull Request size seems relatively large. If this Pull Request contains multiple changes, please split each into separate PR will helps faster, easier review.");
 }
-if (additions < bigPRThreshold) {
-  fail("PR IS TOO SMALL")
-}
 if (bodyText.count == 0) {
-  fail("Give a description to the PR")
+  fail("Every PR deserves some kind of description. Please make sure to give this a good description.")
 }
