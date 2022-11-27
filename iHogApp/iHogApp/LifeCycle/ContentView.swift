@@ -9,7 +9,6 @@
 
 import Components
 import ComposableArchitecture
-import CoreData
 import Frontpanel
 import SFSafeSymbols
 import SwiftUI
@@ -56,7 +55,7 @@ struct ContentView: View {
                                     text: viewStore.binding(\.$showName)
                                 )
                                 Button {
-                                    viewStore.send(.saveButtonTapped)
+                                    viewStore.send(.saveButtonTapped(viewStore.showName))
                                 } label: {
                                     Text("SAVE")
                                 }
@@ -130,7 +129,6 @@ struct ContentView: View {
             }
 
         }
-        .debug()
     }
 }
 

@@ -11,6 +11,7 @@ import Foundation
 
 public enum AnalyticEvent: String {
     case appLoaded = "AppLoaded"
+    case dataLoadFailed = "dataLoadFailed"
 
     var name: String { self.rawValue }
 }

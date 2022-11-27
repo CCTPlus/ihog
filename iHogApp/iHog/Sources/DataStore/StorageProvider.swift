@@ -1,10 +1,11 @@
 // StorageProvider.swift
 //
 // Follow Jay on mastodon @heyjay@iosdev.space
-//              twitter  @heyjaywilson
-//              github     @heyjaywilson
-//              website  cctplus.dev
+//              twitter   @heyjaywilson
+//              github    @heyjaywilson
+//              website   cctplus.dev
 
+import Analytics
 import CoreData
 import Foundation
 
@@ -14,12 +15,16 @@ public class StorageProvider {
     public static let shared = StorageProvider()
 
     init() {
-        persistentContainer = NSPersistentCloudKitContainer(name: "iHog")
+        let objectModelURL = Bundle.module.url(forResource: "iHog", withExtension: "momd")
+        let mom = NSManagedObjectModel(contentsOf: objectModelURL!)
 
-        persistentContainer.loadPersistentStores { desrcription, error in
+        persistentContainer = NSPersistentCloudKitContainer(name: "iHog", managedObjectModel: mom!)
+        persistentContainer.loadPersistentStores { description, error in
             if let error = error {
-                fatalError("Cloudkit store faileddddd with error: \(error)")
+                Analytics.shared.capture(event: .dataLoadFailed)
+                fatalError("Cloudkit store failed with error: \(error)")
             }
+            print("Core data loaded: \(description)")
         }
         persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
     }

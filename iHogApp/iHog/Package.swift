@@ -51,7 +51,13 @@ let package = Package(
             name: "Components",
             dependencies: [.product(name: "SFSafeSymbols", package: "SFSafeSymbols")]
         ),
-        .target(name: "DataStore", dependencies: []),
+        .target(
+            name: "DataStore",
+            dependencies: [
+                "Analytics",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
         .target(
             name: "Frontpanel",
             dependencies: [
