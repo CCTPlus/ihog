@@ -13,7 +13,10 @@ Complete re-write to improve development experience. Also fixes a nasty bug wher
 
 ### Changed
 
+- User interaction for new show @heyjaywilson #17
+
 ### Deprecated
+- [Work log](./docs/worklog.md) has been deprecated in favor of this document @heyjaywilson #17
 
 ### Removed
 
