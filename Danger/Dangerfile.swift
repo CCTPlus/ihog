@@ -2,7 +2,8 @@ import Danger
 let danger = Danger()
 
 // MARK: Constants
-let hasChangelog = danger.git.modifiedFiles.contains("CHANGELOG.md")
+// TODO: REMOVE THE CREATED on `hasChangelog`
+let hasChangelog = danger.git.modifiedFiles.contains("CHANGELOG.md") || danger.git.createdFiles.contains("CHANGELOG.md")
 let bodyText = danger.github.pullRequest.body ?? ""
 let titleText = danger.github.pullRequest.title
 let isTrivial = (bodyText + titleText).contains("#trivial")
