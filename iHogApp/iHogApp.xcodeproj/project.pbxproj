@@ -38,6 +38,7 @@
 		377BB3AE291CC98500730F97 /* EnvironmentVariableNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariableNames.swift; sourceTree = "<group>"; };
 		37A57FCB291EAA2200AEDD9B /* iHog */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = iHog; sourceTree = "<group>"; };
 		37F4D024291CBE7F004D900B /* iHog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHog.xcdatamodel; sourceTree = "<group>"; };
+		69497AA929330EB3006E4BD4 /* iHogApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHogApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 		37164426291C4561006683F3 /* iHogApp */ = {
 			isa = PBXGroup;
 			children = (
+				69497AA929330EB3006E4BD4 /* iHogApp.entitlements */,
 				377BB3AD291CC97400730F97 /* Helpers */,
 				37F4D014291CB91E004D900B /* CoreData */,
 				37F4D013291CB90F004D900B /* LifeCycle */,
@@ -375,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iHogApp/iHogApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iHogApp/Preview Content\"";
@@ -404,6 +407,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iHogApp/iHogApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iHogApp/Preview Content\"";

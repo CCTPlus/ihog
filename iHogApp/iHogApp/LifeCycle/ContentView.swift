@@ -50,10 +50,18 @@ struct ContentView: View {
 
                         }
                         .sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
-                            TextField(
-                                "Show name",
-                                text: viewStore.binding(\.$showName)
-                            )
+                            VStack {
+                                TextField(
+                                    "Show name",
+                                    text: viewStore.binding(\.$showName)
+                                )
+                                Button {
+                                    viewStore.send(.saveButtonTapped)
+                                } label: {
+                                    Text("SAVE")
+                                }
+
+                            }
                         }
                     }
                     // -MARK: Settings

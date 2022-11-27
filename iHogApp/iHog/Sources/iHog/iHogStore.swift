@@ -30,12 +30,17 @@ public struct iHog: ReducerProtocol {
     public enum Action: BindableAction {
         case binding(BindingAction<State>)
         case addShowButtonTapped
+        case saveButtonTapped
     }
 
     public var body: some ReducerProtocol<State, Action> {
         BindingReducer()
         Reduce { state, action in
             switch action {
+                case .saveButtonTapped:
+                    storageProvider.addShow(name: "Hello")
+                    state.isAddingShow = false
+                    return .none
                 case .addShowButtonTapped:
                     state.isAddingShow = true
                     return .none
