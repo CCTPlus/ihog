@@ -10,9 +10,9 @@ final class iHogTests: XCTestCase {
             initialState: iHog.State(),
             reducer: iHog()
         )
-
-        await store.send(.navRowPressed(.osc)) {
-            $0.navLocation = .osc
-        }
+//
+//        await store.send(.navRowPressed(.osc)) {
+//            $0.navLocation = .osc
+//        }
     }
 }

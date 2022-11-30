@@ -70,7 +70,12 @@ let package = Package(
             name: "iHog",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 "DataStore",
+            ],
+            resources: [
+                .process("Resources/categories.plist"),
+                .process("Resources/symbol_categories.plist"),
             ]
         ),
         .testTarget(
