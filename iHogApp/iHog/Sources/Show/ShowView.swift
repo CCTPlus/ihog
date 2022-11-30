@@ -8,6 +8,8 @@
 //               website  cctplus.dev
 
 import ComposableArchitecture
+import SFSafeSymbols
+
 import SwiftUI
 
 public struct ShowView: View {
@@ -19,7 +21,18 @@ public struct ShowView: View {
 
     public var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            Text(viewStore.selectedShow?.name ?? "No name")
+            TabView {
+                Text("Programming Objects")
+                    .tabItem {
+                        Image(systemSymbol: .grid)
+                        Text("Programming")
+                    }
+                Text("Playback Objects")
+                    .tabItem {
+                        Image(systemSymbol: .play)
+                        Text("Playback")
+                    }
+            }
         }
     }
 }
