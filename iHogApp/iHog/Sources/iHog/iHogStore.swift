@@ -78,7 +78,7 @@ public struct iHog: ReducerProtocol {
                     return .none
                 case .saveButtonTapped(let show):
                     return .task { [] in
-                        .saveShowResponse(
+                        return .saveShowResponse(
                             TaskResult(
                                 showManager.save(show: show)
                             )
@@ -86,6 +86,7 @@ public struct iHog: ReducerProtocol {
                     }
                 case .saveShowResponse(.success(let show)):
                     print("show saved correctly: \(show.name)")
+                    state.shows.append(show)
                     state.isAddingShow = false
                     return .none
                 case .saveShowResponse(.failure):

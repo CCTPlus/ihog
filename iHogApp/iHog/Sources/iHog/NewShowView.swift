@@ -8,6 +8,7 @@
 //               website  cctplus.dev
 
 import ComposableArchitecture
+import DataStore
 import Foundation
 import SFSafeSymbols
 import SwiftUI
@@ -30,7 +31,7 @@ public struct NewShowView: View {
                             Image(systemSymbol: SFSymbol(rawValue: viewStore.selectedIcon))
                         }
                         .frame(width: 40, height: 40)
-                        TextField("Show Name", text: .constant("New show"))
+                        TextField("Show Name", text: viewStore.binding(\.$showName))
                             .textFieldStyle(.roundedBorder)
                     }
                     .onAppear {
@@ -84,7 +85,14 @@ public struct NewShowView: View {
                 .toolbar {
                     ToolbarItem {
                         Button {
-                            print("save")
+                            let show = Show(
+                                name: viewStore.showName,
+                                dateCreated: Date(),
+                                dateLastModified: Date(),
+                                icon: viewStore.selectedIcon,
+                                note: ""
+                            )
+                            viewStore.send(.saveButtonTapped(show))
                         } label: {
                             Text("Save")
                         }
