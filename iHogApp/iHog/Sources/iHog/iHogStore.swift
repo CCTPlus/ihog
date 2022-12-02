@@ -63,9 +63,9 @@ public struct iHog: ReducerProtocol {
                     return .none
                 case .fetchShows:
                     return .task { [] in
-                            .fetchShowsResponse(
-                                TaskResult(showManager.fetchShows())
-                            )
+                        .fetchShowsResponse(
+                            TaskResult(showManager.fetchShows())
+                        )
                     }
                 case .fetchShowsResponse(.success(let shows)):
                     state.shows = shows
@@ -78,11 +78,11 @@ public struct iHog: ReducerProtocol {
                     return .none
                 case .saveButtonTapped(let show):
                     return .task { [] in
-                            .saveShowResponse(
-                                TaskResult(
-                                    showManager.save(show: show)
-                                )
+                        .saveShowResponse(
+                            TaskResult(
+                                showManager.save(show: show)
                             )
+                        )
                     }
                 case .saveShowResponse(.success(let show)):
                     print("show saved correctly: \(show.name)")

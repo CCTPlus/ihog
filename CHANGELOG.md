@@ -1,27 +1,32 @@
 # CHANGELOG
 
-## v2022.11
 
-### Summary
+## Unreleased
+
+### v2022.11
+
+#### Summary
 
 Complete re-write to improve development experience. Also fixes a nasty bug where the user's level isn't persisted.
 
-### Added
+#### Added
 
+- Ability to change the show icon for pro users @heyjaywilson #21
 - (Dev) Dangerfile for PR consistency @heyjaywilson #16
 - (Dev) GitHub action to run Dangerfile #heyjaywilson #16
 
-### Changed
+#### Changed
 
 - User interaction for new show @heyjaywilson #17
 
-### Deprecated
+#### Deprecated
+
 - [Work log](./docs/worklog.md) has been deprecated in favor of this document @heyjaywilson #17
 
-### Removed
+#### Removed
 
-### Fixed
+#### Fixed
 
 <!-- - Bug where users' purchases aren't stored if the user is offline -->
 
-### Security
+#### Security
