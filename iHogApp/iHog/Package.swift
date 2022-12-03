@@ -84,6 +84,11 @@ let package = Package(
                 "DataStore",
                 "Show",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            ],
+            resources: [
+                .process("Resources/categories.plist"),
+                .process("Resources/symbol_categories.plist"),
             ]
         ),
         .testTarget(

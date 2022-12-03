@@ -63,6 +63,7 @@ struct ContentView: View {
                                     Text("SAVE")
                                 }
                             }
+                            NewShowView(store: store)
                         }
                         ForEach(viewStore.shows) { show in
                             Button {
@@ -147,7 +148,7 @@ struct ContentView: View {
                 }
             }
         }
-        .debug()
+        //        .debug()
     }
 }
 
