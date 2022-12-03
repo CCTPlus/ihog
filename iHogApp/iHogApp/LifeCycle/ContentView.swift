@@ -52,18 +52,7 @@ struct ContentView: View {
 
                         }
                         .sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
-                            VStack {
-                                TextField(
-                                    "Show name",
-                                    text: viewStore.binding(\.$showName)
-                                )
-                                Button {
-                                    viewStore.send(.saveButtonTapped(viewStore.showName))
-                                } label: {
-                                    Text("SAVE")
-                                }
-
-                            }
+                            NewShowView(store: store)
                         }
                         ForEach(viewStore.shows) { show in
                             Text(show.name)
@@ -135,7 +124,7 @@ struct ContentView: View {
             }
 
         }
-        .debug()
+        //        .debug()
     }
 }
 
