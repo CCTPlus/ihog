@@ -55,7 +55,11 @@ struct ContentView: View {
                             NewShowView(store: store)
                         }
                         ForEach(viewStore.shows) { show in
-                            Text(show.name)
+                            Sydney(
+                                labelText: show.name,
+                                color: .gray,
+                                symbol: SFSymbol(rawValue: show.icon)
+                            )
                         }
                     }
                     // -MARK: Settings

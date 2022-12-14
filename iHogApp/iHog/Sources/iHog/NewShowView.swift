@@ -26,7 +26,7 @@ public struct NewShowView: View {
                 VStack {
                     HStack {
                         Button {
-                            print("change icon")
+                            viewStore.send(.changeIconButtonTapped)
                         } label: {
                             Image(systemSymbol: SFSymbol(rawValue: viewStore.selectedIcon))
                         }
@@ -39,49 +39,59 @@ public struct NewShowView: View {
                     }
                     .padding(.horizontal)
                     /// MARK: Category ScrollView
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack {
-                            ForEach(viewStore.categories, id: \.key) { cat in
-                                Button {
-                                    viewStore.send(.selectCategory(cat.key))
-                                } label: {
-                                    Image(systemName: cat.icon)
-                                        .symbolVariant(
-                                            viewStore.selectedCategory == cat.key ? .fill : .none
-                                        )
-                                        .font(.title)
-                                        .padding(.trailing)
+                    if viewStore.state.iconSelectorShown {
+                        VStack {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack {
+                                    ForEach(viewStore.categories, id: \.key) { cat in
+                                        Button {
+                                            viewStore.send(.selectCategory(cat.key))
+                                        } label: {
+                                            Image(systemName: cat.icon)
+                                                .symbolVariant(
+                                                    viewStore.selectedCategory == cat.key
+                                                    ? .fill : .none
+                                                )
+                                                .font(.title)
+                                                .padding(.trailing)
+                                        }
+                                        .accessibilityLabel(Text(cat.label))
+                                    }
                                 }
-                                .accessibilityLabel(Text(cat.label))
+                            }
+                            .frame(maxHeight: 40)
+                            .padding()
+                            .background(Material.bar)
+                            /// MARK: Icon ScrollView
+                            ScrollView {
+                                LazyVGrid(columns: [GridItem(), GridItem(), GridItem()]) {
+                                    ForEach(
+                                        viewStore.iconsInCategories[viewStore.selectedCategory] ?? [],
+                                        id: \.self
+                                    ) { symbol in
+                                        Button {
+                                            viewStore.send(.selectIcon(symbol))
+                                        } label: {
+                                            Image(systemName: symbol)
+                                                .symbolVariant(
+                                                    viewStore.selectedIcon == symbol ? .fill : .none
+                                                )
+                                                .font(.title)
+                                                .padding(.trailing)
+                                        }
+                                        .accessibilityLabel(Text(symbol))
+                                        .padding()
+                                    }
+                                }
                             }
                         }
-                    }
-                    .frame(maxHeight: 40)
-                    .padding()
-                    .background(Material.bar)
-                    /// MARK: Icon ScrollView
-                    ScrollView {
-                        LazyVGrid(columns: [GridItem(), GridItem(), GridItem()]) {
-                            ForEach(
-                                viewStore.iconsInCategories[viewStore.selectedCategory] ?? [],
-                                id: \.self
-                            ) { symbol in
-                                Button {
-                                    viewStore.send(.selectIcon(symbol))
-                                } label: {
-                                    Image(systemName: symbol)
-                                        .symbolVariant(
-                                            viewStore.selectedIcon == symbol ? .fill : .none
-                                        )
-                                        .font(.title)
-                                        .padding(.trailing)
-                                }
-                                .accessibilityLabel(Text(symbol))
-                                .padding()
-                            }
-                        }
+                        .transition(.opacity)
+
+                    } else {
+                        Spacer()
                     }
                 }
+                .animation(.default, value: viewStore.state.iconSelectorShown)
                 .toolbar {
                     ToolbarItem {
                         Button {
