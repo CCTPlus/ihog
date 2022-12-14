@@ -52,29 +52,9 @@ struct ContentView: View {
                             .buttonStyle(.plain)
                         }
                         .sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
-                            VStack {
-                                TextField(
-                                    "Show name",
-                                    text: viewStore.binding(\.$showName)
-                                )
-                                Button {
-                                    viewStore.send(.saveButtonTapped(viewStore.showName))
-                                } label: {
-                                    Text("SAVE")
-                                }
-                            }
                             NewShowView(store: store)
                         }
                         ForEach(viewStore.shows) { show in
-                            Button {
-                                viewStore.send(.showTapped(show))
-                                viewStore.send(.show(.showSelected(show)))
-                            } label: {
-                                HStack {
-                                    RowIcon(color: .gray, symbol: SFSymbol(rawValue: show.icon))
-                                    Text(show.name)
-                                }
-                            }
                             Sydney(
                                 labelText: show.name,
                                 color: .gray,
