@@ -7,18 +7,22 @@
 //              github	 @heyjaywilson
 //              website  cctplus.dev
 
+import Analytics
 import ComposableArchitecture
 import DataStore
 import Foundation
 import Show
+import SwiftUI
 
 public struct iHog: ReducerProtocol {
     private var showManager: ShowManager
     private var symbolHelper: SymbolHelper
+    private var analytics: Analytics
 
     public init() {
         self.showManager = ShowManager()
         self.symbolHelper = SymbolHelper()
+        self.analytics = Analytics.shared
     }
 
     public struct State: Equatable {
@@ -30,6 +34,7 @@ public struct iHog: ReducerProtocol {
         @BindableState public var showIcon = "folder"
 
         public var iconsInCategories: [String: [String]] = [:]
+        public var iconSelectorShown = false
         public var categories: [Category] = []
         public var selectedCategory: String = ""
         public var selectedIcon: String = "folder"
@@ -53,6 +58,7 @@ public struct iHog: ReducerProtocol {
         case fetchShowsResponse(TaskResult<[Show]>)
         case showTapped(Show)
         case show(ShowStore.Action)
+        case changeIconButtonTapped
         case selectCategory(String)
         case selectIcon(String)
         case onAppear
@@ -78,19 +84,8 @@ public struct iHog: ReducerProtocol {
                         state.iconsInCategories = symbolHelper.sortSymbolsIntoCategories()
                     }
                     return .none
-                case .fetchShows:
-                    return .task { [] in
-                        .fetchShowsResponse(
-                            TaskResult(showManager.fetchShows())
-                        )
-                    }
-                case .fetchShowsResponse(.success(let shows)):
-                    state.shows = shows
-                    return .none
-                case .fetchShowsResponse(.failure(let error)):
-                    print(error)
-                    return .none
                 case .addShowButtonTapped:
+                    analytics.capture(event: .addShow)
                     state.isAddingShow = true
                     return .none
                 case .saveButtonTapped(let show):
@@ -107,10 +102,29 @@ public struct iHog: ReducerProtocol {
                     state.isAddingShow = false
                     return .none
                 case .saveShowResponse(.failure):
+                    analytics.capture(event: .errorSavingShow)
                     print("ERROR SAVING SHOW")
                     return .none
+                case .fetchShows:
+                    return .task { [] in
+                        .fetchShowsResponse(
+                            TaskResult(showManager.fetchShows())
+                        )
+                    }
+                case .fetchShowsResponse(.success(let shows)):
+                    state.shows = shows
+                    return .none
+                case .fetchShowsResponse(.failure(let error)):
+                    print(error)
+                    return .none
+                case .changeIconButtonTapped:
+                    withAnimation { state.iconSelectorShown.toggle() }
+                    if state.categories.count > 0 {
+                        withAnimation { state.selectedCategory = "indices" }
+                    }
+                    return .none
                 case .selectCategory(let key):
-                    state.selectedCategory = key
+                    withAnimation { state.selectedCategory = key }
                     return .none
                 case .selectIcon(let icon):
                     state.selectedIcon = icon

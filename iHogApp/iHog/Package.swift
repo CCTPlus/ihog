@@ -81,8 +81,9 @@ let package = Package(
         .target(
             name: "iHog",
             dependencies: [
-                "DataStore",
                 "Show",
+                "Analytics",
+                "DataStore",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             ],

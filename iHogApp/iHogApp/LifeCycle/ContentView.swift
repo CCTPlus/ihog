@@ -75,6 +75,11 @@ struct ContentView: View {
                                     Text(show.name)
                                 }
                             }
+                            Sydney(
+                                labelText: show.name,
+                                color: .gray,
+                                symbol: SFSymbol(rawValue: show.icon)
+                            )
                         }
                     }
                     // -MARK: Settings
