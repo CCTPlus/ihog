@@ -16,8 +16,11 @@ public struct ShowStore: ReducerProtocol {
     public init() {}
 
     public struct State: Equatable {
-        public var selectedShow: Show? = nil
-        public init() {}
+        public var selectedShow: Show?
+
+        public init(show: Show?) {
+            self.selectedShow = show
+        }
     }
 
     public enum Action {

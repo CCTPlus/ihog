@@ -55,11 +55,15 @@ struct ContentView: View {
                             NewShowView(store: store)
                         }
                         ForEach(viewStore.shows) { show in
-                            Sydney(
-                                labelText: show.name,
-                                color: .gray,
-                                symbol: SFSymbol(rawValue: show.icon)
-                            )
+                            Button {
+                                viewStore.send(.showTapped(show))
+                            } label: {
+                                Sydney(
+                                    labelText: show.name,
+                                    color: .gray,
+                                    symbol: SFSymbol(rawValue: show.icon)
+                                )
+                            }
                         }
                     }
                     // -MARK: Settings

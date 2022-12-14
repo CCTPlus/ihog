@@ -33,12 +33,22 @@ public struct ShowView: View {
                         Text("Playback")
                     }
             }
+            .navigationTitle(viewStore.selectedShow?.name ?? "No name found")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
-//struct SwiftUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ShowView()
-//    }
-//}
+struct SwiftUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ShowView(
+                store:
+                    Store(
+                        initialState: ShowStore.State(show: TestShowStore.show),
+                        reducer: ShowStore()
+                    )
+            )
+        }
+    }
+}

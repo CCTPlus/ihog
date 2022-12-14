@@ -45,7 +45,7 @@ public struct iHog: ReducerProtocol {
 
         public init(navLocation: Routes? = nil) {
             self.navLocation = navLocation
-            self.showState = ShowStore.State()
+            self.showState = ShowStore.State(show: nil)
         }
     }
 
@@ -68,15 +68,11 @@ public struct iHog: ReducerProtocol {
         BindingReducer()
         Reduce { state, action in
             switch action {
-                case .show(let showAction):
-                    switch showAction {
-                        case .showSelected(let show):
-                            state.showState.selectedShow = show
-                    }
+                case .show(_):
                     return .none
                 case .showTapped(let selectedShow):
+                    state.showState.selectedShow = selectedShow
                     state.navLocation = .show
-                    state.selectedShow = selectedShow
                     return .none
                 case .onAppear:
                     if state.categories.isEmpty {

@@ -50,7 +50,7 @@ public struct NewShowView: View {
                                             Image(systemName: cat.icon)
                                                 .symbolVariant(
                                                     viewStore.selectedCategory == cat.key
-                                                    ? .fill : .none
+                                                        ? .fill : .none
                                                 )
                                                 .font(.title)
                                                 .padding(.trailing)
@@ -66,7 +66,8 @@ public struct NewShowView: View {
                             ScrollView {
                                 LazyVGrid(columns: [GridItem(), GridItem(), GridItem()]) {
                                     ForEach(
-                                        viewStore.iconsInCategories[viewStore.selectedCategory] ?? [],
+                                        viewStore.iconsInCategories[viewStore.selectedCategory]
+                                            ?? [],
                                         id: \.self
                                     ) { symbol in
                                         Button {
