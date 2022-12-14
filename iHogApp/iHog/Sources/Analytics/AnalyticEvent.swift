@@ -10,8 +10,13 @@
 import Foundation
 
 public enum AnalyticEvent: String {
-    case appLoaded = "AppLoaded"
+    case appLoaded = "appLoaded"
     case dataLoadFailed = "dataLoadFailed"
+    case addShow = "addShow"
+    case showIconTapped = "showIconTapped"
+
+    /// Errors
+    case errorSavingShow = "errorSavingShow"
 
     var name: String { self.rawValue }
 }
