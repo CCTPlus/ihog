@@ -12,6 +12,7 @@ Complete re-write to improve development experience. Also fixes a nasty bug wher
 #### Added
 
 - Ability to change the show icon for pro users @heyjaywilson #21
+- Ability to view contents of a show @heyjaywilson #
 - (Dev) Dangerfile for PR consistency @heyjaywilson #16
 - (Dev) GitHub action to run Dangerfile #heyjaywilson #16
 
