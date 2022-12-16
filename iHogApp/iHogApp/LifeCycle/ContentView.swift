@@ -39,21 +39,6 @@ struct ContentView: View {
                     }
                     // -MARK: Shows
                     Section {
-                        HStack {
-                            RowIcon(color: .gray, symbol: .folder)
-                            Text("Add Show")
-                            Spacer()
-                            Button {
-                                viewStore.send(.addShowButtonTapped)
-                            } label: {
-                                Image(systemSymbol: .plusCircle)
-                                    .foregroundColor(.accentColor)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                        .sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
-                            NewShowView(store: store)
-                        }
                         ForEach(viewStore.shows) { show in
                             Button {
                                 viewStore.send(.showTapped(show))
@@ -63,8 +48,11 @@ struct ContentView: View {
                                     color: .gray,
                                     symbol: SFSymbol(rawValue: show.icon)
                                 )
+                                .foregroundColor(.primary)
                             }
                         }
+                    } header: {
+                        Text("\(Image(systemSymbol: .folder)) Shows")
                     }
                     // -MARK: Settings
                     Section {
@@ -108,14 +96,29 @@ struct ContentView: View {
                                 symbol: .squareAndArrowUp
                             )
                         }
+                    }
+                    Text("Made with 💙 and ☕\nin Austin, TX")
                         .frame(maxWidth: .infinity)
                         .font(.footnote)
+                        .multilineTextAlignment(.center)
                         .foregroundColor(.secondary)
                         .listRowBackground(Color.clear)
+                }
+                .listStyle(.insetGrouped)
+                .sheet(isPresented: viewStore.binding(\.$isAddingShow)) {
+                    NewShowView(store: store)
+                }
+                .navigationTitle("iHog")
+                .navigationBarTitleDisplayMode(.large)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            viewStore.send(.addShowButtonTapped)
+                        } label: {
+                            Image(systemSymbol: .folderBadgePlus)
+                        }
+
                     }
-                    .listStyle(.insetGrouped)
-                    .navigationTitle("iHog")
-                    .navigationBarTitleDisplayMode(.large)
                 }
             } detail: {
                 switch viewStore.navLocation {
@@ -137,7 +140,7 @@ struct ContentView: View {
                 }
             }
         }
-        //        .debug()
+        .debug()
     }
 }
 
