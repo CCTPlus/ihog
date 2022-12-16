@@ -129,5 +129,11 @@ public struct iHog: ReducerProtocol {
                     return .none
             }
         }
+        Scope(
+            state: \State.showState,
+            action: /Action.show
+        ) {
+            ShowStore()
+        }
     }
 }

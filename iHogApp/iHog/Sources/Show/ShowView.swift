@@ -20,17 +20,31 @@ public struct ShowView: View {
 
     public var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            TabView {
-                Text("Programming Objects")
+            TabView(selection: viewStore.binding(\.$selectedTab)) {
+                ObjectsView(store: store)
                     .tabItem {
-                        Image(systemSymbol: .grid)
-                        Text("Programming")
+                        Image(systemSymbol: .listClipboard)
+                        Text("Objects")
                     }
-                Text("Playback Objects")
+                    .tag(ShowStore.Destination.objects)
+                Text("Favorites")
                     .tabItem {
-                        Image(systemSymbol: .play)
-                        Text("Playback")
+                        Image(systemSymbol: .heart)
+                        Text("Favorites")
                     }
+                    .tag(ShowStore.Destination.favorites)
+                Text("Punt")
+                    .tabItem {
+                        Image(systemSymbol: .cpu)
+                        Text("Punt")
+                    }
+                    .tag(ShowStore.Destination.punt)
+                Text("Settings")
+                    .tabItem {
+                        Image(systemSymbol: .gearshape2)
+                        Text("Settings")
+                    }
+                    .tag(ShowStore.Destination.settings)
             }
             .navigationTitle(viewStore.selectedShow?.name ?? "No name found")
             .navigationBarTitleDisplayMode(.inline)
@@ -38,7 +52,7 @@ public struct ShowView: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct ShowView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ShowView(
