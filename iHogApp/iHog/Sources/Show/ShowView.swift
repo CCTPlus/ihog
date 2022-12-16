@@ -9,7 +9,6 @@
 
 import ComposableArchitecture
 import SFSafeSymbols
-
 import SwiftUI
 
 public struct ShowView: View {
