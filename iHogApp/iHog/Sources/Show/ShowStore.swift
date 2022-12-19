@@ -10,6 +10,7 @@
 import ComposableArchitecture
 import DataStore
 import Foundation
+import Utilities
 
 public struct ShowStore: ReducerProtocol {
 
@@ -19,7 +20,10 @@ public struct ShowStore: ReducerProtocol {
         public var selectedShow: Show?
         @BindableState public var selectedTab: Destination
 
-        public init(show: Show?, tab: Destination = .objects) {
+        public init(
+            show: Show?,
+            tab: Destination = .objects
+        ) {
             self.selectedShow = show
             self.selectedTab = tab
         }
@@ -28,7 +32,7 @@ public struct ShowStore: ReducerProtocol {
     public enum Action: BindableAction {
         case binding(BindingAction<State>)
         case showSelected(Show)
-        case addObjectTapped
+        case addObjectTapped(ObjectType)
     }
 
     public var body: some ReducerProtocol<State, Action> {
@@ -38,9 +42,10 @@ public struct ShowStore: ReducerProtocol {
                 case .showSelected(let show):
                     state.selectedShow = show
                     return .none
-                case .addObjectTapped:
+                case .addObjectTapped(let type):
                     // opens sheetview
                     // i want to drive it off of a enum
+                    print(type)
                     return .none
                 default:
                     return .none

@@ -44,14 +44,3 @@ public class ShowManager {
         }
     }
 }
-
-extension Show {
-    init(from entity: ShowEntity) {
-        self.name = entity.name ?? "NAME_NOT_FOUND"
-        self.dateCreated = entity.dateCreated ?? Date()
-        self.dateLastModified = entity.dateLastModified ?? Date()
-        self.icon = entity.icon ?? "folder"
-        self.id = entity.id ?? UUID()
-        self.note = entity.note ?? ""
-    }
-}

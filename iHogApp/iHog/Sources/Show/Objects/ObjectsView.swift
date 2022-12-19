@@ -8,6 +8,7 @@
 //               website  cctplus.dev
 
 import ComposableArchitecture
+import Utilities
 import SwiftUI
 
 struct ObjectsView: View {
@@ -26,8 +27,16 @@ struct ObjectsView: View {
                     } label: {
                         Image(systemSymbol: .squareGrid2x2)
                     }
-                    Button {
-                        viewStore.send(.addObjectTapped)
+                    Menu {
+                        ForEach(ObjectType.allCases, id: \.self) { objType in
+                            Button {
+                                viewStore.send(.addObjectTapped(objType))
+                            } label: {
+                                Text(objType.rawValue.capitalized)
+                            }
+
+                        }
+
                     } label: {
                         Image(systemSymbol: .plus)
                     }

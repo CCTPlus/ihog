@@ -59,6 +59,7 @@ let package = Package(
             name: "DataStore",
             dependencies: [
                 "Analytics",
+                "Utilities",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
@@ -74,6 +75,7 @@ let package = Package(
             name: "Show",
             dependencies: [
                 "DataStore",
+                "Utilities",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             ]
