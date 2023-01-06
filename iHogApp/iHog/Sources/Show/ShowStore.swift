@@ -71,6 +71,11 @@ public struct ShowStore: ReducerProtocol {
                     /// 3. Add object to Core Data `ObjectEntity`
                     ///     orrrrr
                     ///     Update the show entity object
+                    do {
+                        try provider.addObjectToShow(showID: show.id, object: object)
+                    } catch {
+                        print(error)
+                    }
                     return .none
                 default:
                     return .none
