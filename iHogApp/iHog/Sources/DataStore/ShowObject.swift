@@ -10,7 +10,7 @@
 import Foundation
 import Utilities
 
-public struct Object: Equatable, Identifiable {
+public struct ShowObject: Equatable, Identifiable {
     public var id: UUID
     public var isOutlined: Bool
     public var name: String
@@ -24,7 +24,7 @@ public struct Object: Equatable, Identifiable {
         name: String,
         number: Double,
         objColor: ObjectColor = .blue,
-        objType: ObjectType = .list
+        objType: ObjectType
     ) {
         self.id = id
         self.isOutlined = isOutlined
@@ -44,7 +44,7 @@ public struct Object: Equatable, Identifiable {
     }
 }
 
-extension Object {
+extension ShowObject {
     static let mockList = Self(
         id: UUID(),
         isOutlined: true,

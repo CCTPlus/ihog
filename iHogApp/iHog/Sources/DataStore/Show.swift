@@ -17,7 +17,7 @@ public struct Show: Equatable, Identifiable {
     public var icon: String
     public var id: UUID
     public var note: String
-    public var objects: [Object]
+    public var objects: [ShowObject]
 
     public init(
         name: String,
@@ -26,7 +26,7 @@ public struct Show: Equatable, Identifiable {
         icon: String,
         id: UUID = UUID(),
         note: String,
-        objects: [Object] = []
+        objects: [ShowObject] = []
     ) {
         self.name = name
         self.dateCreated = dateCreated

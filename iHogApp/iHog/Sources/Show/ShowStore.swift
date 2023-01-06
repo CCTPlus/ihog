@@ -13,6 +13,7 @@ import Foundation
 import Utilities
 
 public struct ShowStore: ReducerProtocol {
+    let provider = StorageProvider.shared
 
     public init() {}
 
@@ -42,10 +43,34 @@ public struct ShowStore: ReducerProtocol {
                 case .showSelected(let show):
                     state.selectedShow = show
                     return .none
-                case .addObjectTapped(let type):
-                    // opens sheetview
-                    // i want to drive it off of a enum
-                    print(type)
+                case .addObjectTapped(let objType):
+                    guard var show = state.selectedShow else {
+                        return .none
+                    }
+                    /// 1. create a new Object
+                    /// the number of the object is the last object of that type in the show +1
+                    let objCount =
+                        show.objects
+                        .filter {
+                            $0.objType == objType
+                        }.count + 1
+                    let objectName = objType.rawValue.capitalized + " \(objCount)"
+                    let object = ShowObject(
+                        isOutlined: false,
+                        name: objectName,
+                        number: Double(objCount),
+                        objType: objType
+                    )
+                    /// 2. add it to the show's object array
+                    if show.objects.count == 0 {
+                        show.objects = [object]
+                        state.selectedShow = show
+                    } else {
+                        state.selectedShow?.objects.append(object)
+                    }
+                    /// 3. Add object to Core Data `ObjectEntity`
+                    ///     orrrrr
+                    ///     Update the show entity object
                     return .none
                 default:
                     return .none
