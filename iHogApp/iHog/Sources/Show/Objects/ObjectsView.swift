@@ -8,37 +8,53 @@
 //               website  cctplus.dev
 
 import ComposableArchitecture
-import Utilities
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
+import Utilities
 
 struct ObjectsView: View {
     let store: StoreOf<ShowStore>
+    let columns = [
+        GridItem(.fixed(100.0), spacing: 10.0, alignment: .center),
+        GridItem(.fixed(100.0), spacing: 10.0, alignment: .center)
+    ]
 
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ScrollView {
-                ForEach(viewStore.selectedShow?.objects ?? []) { obj in
-                    VStack {
-                        HStack {
-                            Text("\(obj.objType.rawValue.capitalized) \(obj.number)")
+                LazyVGrid(columns: columns) {
+                    ForEach(viewStore.selectedShow?.objects ?? []) { obj in
+                        VStack {
+                            HStack {
+                                Text("\(obj.objType.rawValue.capitalized) \(obj.number.removeZerosFromEnd())")
+                                Spacer()
+                                Button {
+                                    viewStore.send(.menuButtonObjectTapped)
+                                } label: {
+                                    Image(systemSymbol: .ellipsisBubble)
+                                }
+
+                            }
+                            Text(obj.name)
+                            HStack {
+                                Button {
+                                    viewStore.send(.playButtonTapped(obj.number))
+                                } label: {
+                                    Image(systemSymbol: .playFill)
+                                }
+                                .foregroundColor(.primary)
+                                Button {
+                                    viewStore.send(.playButtonTapped(obj.number))
+                                } label: {
+                                    Image(systemSymbol: .stopFill)
+                                }
+                                .foregroundColor(.primary)
+
+                            }
+                            .padding()
                         }
-                        Text(obj.name)
-                        HStack {
-                            Button {
-                                viewStore.send(.playButtonTapped(obj.number))
-                            } label: {
-                                Image(systemSymbol: .playFill)
-                            }.foregroundColor(.primary)
-
-                            Button {
-                                viewStore.send(.playButtonTapped(obj.number))
-                            } label: {
-                                Image(systemSymbol: .stopFill)
-                            }.foregroundColor(.primary)
-
-                        }.padding()
-                    }.background(obj.color)
+                        .background(obj.color)
+                    }
                 }
             }
             .toolbarRole(.navigationStack)
