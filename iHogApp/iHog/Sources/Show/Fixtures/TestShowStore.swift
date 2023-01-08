@@ -17,6 +17,7 @@ struct TestShowStore {
         dateCreated: Date(),
         dateLastModified: Date(),
         icon: "folder",
-        note: "Ticketmaster messed this up"
+        note: "Ticketmaster messed this up",
+        objects: [ShowObject(isOutlined: true, name: "List 1", number: 1.0, objType: .list)]
     )
 }

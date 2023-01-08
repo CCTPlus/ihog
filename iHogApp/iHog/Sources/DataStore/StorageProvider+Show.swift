@@ -23,6 +23,7 @@ extension StorageProvider {
 
     public func addObjectToShow(showID id: UUID, object: ShowObject) throws {
         let show = try fetchSpecificShow(with: id)
+        show.dateLastModified = Date()
         let objectToAdd = ShowObjectEntity(context: persistentContainer.viewContext)
         objectToAdd.id = object.id
         objectToAdd.objType = object.objType.rawValue

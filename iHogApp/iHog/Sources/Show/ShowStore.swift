@@ -34,6 +34,8 @@ public struct ShowStore: ReducerProtocol {
         case binding(BindingAction<State>)
         case showSelected(Show)
         case addObjectTapped(ObjectType)
+        case playButtonTapped(Double)
+        case stopButtonTapped(Double)
     }
 
     public var body: some ReducerProtocol<State, Action> {
@@ -49,8 +51,7 @@ public struct ShowStore: ReducerProtocol {
                     }
                     /// 1. create a new Object
                     /// the number of the object is the last object of that type in the show +1
-                    let objCount =
-                        show.objects
+                    let objCount = show.objects
                         .filter {
                             $0.objType == objType
                         }.count + 1
@@ -68,14 +69,18 @@ public struct ShowStore: ReducerProtocol {
                     } else {
                         state.selectedShow?.objects.append(object)
                     }
-                    /// 3. Add object to Core Data `ObjectEntity`
-                    ///     orrrrr
-                    ///     Update the show entity object
+                    /// 3. Save to Core Data
                     do {
                         try provider.addObjectToShow(showID: show.id, object: object)
                     } catch {
                         print(error)
                     }
+                    return .none
+                case .playButtonTapped(let objNum):
+                    print(objNum)
+                    return .none
+                case .stopButtonTapped(let objNum):
+                    print(objNum)
                     return .none
                 default:
                     return .none

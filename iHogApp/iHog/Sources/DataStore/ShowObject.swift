@@ -9,14 +9,36 @@
 
 import Foundation
 import Utilities
+import SwiftUI
 
-public struct ShowObject: Equatable, Identifiable {
+public struct ShowObject: Equatable, Identifiable, Hashable {
     public var id: UUID
     public var isOutlined: Bool
     public var name: String
     public var number: Double
     public var objColor: ObjectColor
     public var objType: ObjectType
+
+    public var color: Color {
+        switch objColor {
+            case .red:
+                return .red
+            case .green:
+                return .green
+            case .blue:
+                return .blue
+            case .yellow:
+                return .yellow
+            case .gray:
+                return .gray
+            case .orange:
+                return .orange
+            case .pink:
+                return .pink
+            case .purple:
+                return .purple
+        }
+    }
 
     public init(
         id: UUID = UUID(),
@@ -41,6 +63,10 @@ public struct ShowObject: Equatable, Identifiable {
         self.number = entity.number
         self.objType = ObjectType(rawValue: entity.objType ?? "list") ?? .list
         self.objColor = ObjectColor(rawValue: entity.objColor ?? "blue") ?? .blue
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
     }
 }
 

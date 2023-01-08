@@ -44,7 +44,15 @@ public struct Show: Equatable, Identifiable {
         self.icon = entity.icon ?? "folder"
         self.id = entity.id ?? UUID()
         self.note = entity.note ?? ""
-        self.objects = Array(_immutableCocoaArray: entity.objects ?? NSSet())
+
+        // conversts objects to showobjects
+        let objs = entity.objects as? Set<ShowObjectEntity>
+        let convertedObjs = objs?
+            .compactMap({ obj in
+                ShowObject(from: obj)
+            })
+        //        self.objects = Array(objs ?? Set<ShowObject>())
+        self.objects = convertedObjs ?? []
     }
 }
 
