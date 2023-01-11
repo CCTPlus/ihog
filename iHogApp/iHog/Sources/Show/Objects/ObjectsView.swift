@@ -17,22 +17,17 @@ struct ObjectsView: View {
     let columns = [
         GridItem(.flexible(), spacing: 10.0, alignment: .center),
         GridItem(.flexible(), spacing: 10.0, alignment: .center),
+        GridItem(.flexible(), spacing: 10.0, alignment: .center)
     ]
 
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            GeometryReader { geo in
-                ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(viewStore.objects) { obj in
-                            ObjectView(
-                                width: geo.size.width * 0.30,
-                                object: obj
-                            )
-                        }
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(viewStore.objects) { obj in
+                        ObjectView(object: obj)
                     }
-                }
-                .frame(width: geo.size.width, height: geo.size.height)
+                }.padding(.horizontal)
             }
             .toolbarRole(.navigationStack)
             .toolbar {
@@ -52,7 +47,7 @@ struct ObjectsView: View {
                         }
 
                     } label: {
-                        Image(systemSymbol: .squareGrid2x2)
+                        Image(systemSymbol: .line3HorizontalDecreaseCircle)
                     }
                     Menu {
                         ForEach(ObjectType.allCases, id: \.self) { objType in

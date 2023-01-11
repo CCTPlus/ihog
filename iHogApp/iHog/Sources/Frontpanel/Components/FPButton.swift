@@ -10,11 +10,17 @@
 import SFSafeSymbols
 import SwiftUI
 
-struct FPButton: View {
+public struct FPButton: View {
+    public init(label: String, icon: Image? = nil, width: CGFloat? = nil) {
+        self.label = label
+        self.icon = icon
+        self.width = width
+    }
+
     var label: String
     var icon: Image? = nil
     var width: CGFloat? = nil
-    var body: some View {
+    public var body: some View {
         Button {
             print(label)
         } label: {

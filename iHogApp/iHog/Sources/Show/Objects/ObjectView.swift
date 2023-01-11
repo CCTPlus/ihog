@@ -11,7 +11,6 @@ import DataStore
 import SwiftUI
 
 struct ObjectView: View {
-    var width: CGFloat
     var object: ShowObject
 
     var body: some View {
@@ -38,10 +37,11 @@ struct ObjectView: View {
                     .padding(.top)
             }
             .foregroundColor(.primary)
-            .frame(width: width, height: width)
+            .aspectRatio(1/1, contentMode: .fill)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.all, 20.0)
             .background(object.color)
-            .cornerRadius(width * 0.15)
+            .cornerRadius(20.0)
         }
         
     }
