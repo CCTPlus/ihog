@@ -51,19 +51,18 @@ public struct Show: Equatable, Identifiable {
             .compactMap({ obj in
                 ShowObject(from: obj)
             })
-        //        self.objects = Array(objs ?? Set<ShowObject>())
         self.objects = convertedObjs ?? []
     }
 }
 
 extension Show {
-    static let mock = Self(
+    public static let mock = Self(
         name: "TS Eras",
         dateCreated: Date(),
         dateLastModified: Date(),
         icon: "folder",
         id: UUID(),
         note: "Hello",
-        objects: [.mockList, .mockList2]
+        objects: [.mockList, .mockList2, .mockScene]
     )
 }

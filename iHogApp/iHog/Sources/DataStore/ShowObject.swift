@@ -8,8 +8,8 @@
 //               website  cctplus.dev
 
 import Foundation
-import Utilities
 import SwiftUI
+import Utilities
 
 public struct ShowObject: Equatable, Identifiable, Hashable {
     public var id: UUID
@@ -38,6 +38,10 @@ public struct ShowObject: Equatable, Identifiable, Hashable {
             case .purple:
                 return .purple
         }
+    }
+
+    public var rawName: String {
+        return "\(objType.rawValue.capitalized) \(number.removeZerosFromEnd())"
     }
 
     public init(
@@ -71,7 +75,7 @@ public struct ShowObject: Equatable, Identifiable, Hashable {
 }
 
 extension ShowObject {
-    static let mockList = Self(
+    public static let mockList = Self(
         id: UUID(),
         isOutlined: true,
         name: "List 1",
@@ -79,12 +83,20 @@ extension ShowObject {
         objColor: ObjectColor.blue,
         objType: ObjectType.list
     )
-    static let mockList2 = Self(
+    public static let mockList2 = Self(
         id: UUID(),
         isOutlined: true,
         name: "List 2",
         number: 2.0,
         objColor: ObjectColor.blue,
         objType: ObjectType.list
+    )
+    public static let mockScene = Self(
+        id: UUID(),
+        isOutlined: false,
+        name: "BLACK OUT",
+        number: 1.0,
+        objColor: .purple,
+        objType: .scene
     )
 }

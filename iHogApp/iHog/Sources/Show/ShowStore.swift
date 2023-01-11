@@ -20,13 +20,19 @@ public struct ShowStore: ReducerProtocol {
     public struct State: Equatable {
         public var selectedShow: Show?
         @BindableState public var selectedTab: Destination
+        @BindableState public var isObjectMenuOpen: Bool
+        fileprivate var objectID: UUID?
 
         public init(
             show: Show?,
-            tab: Destination = .objects
+            tab: Destination = .objects,
+            isObjectMenuOpen: Bool = false,
+            objectID: UUID? = nil
         ) {
             self.selectedShow = show
             self.selectedTab = tab
+            self.isObjectMenuOpen = isObjectMenuOpen
+            self.objectID = objectID
         }
     }
 
@@ -36,55 +42,64 @@ public struct ShowStore: ReducerProtocol {
         case addObjectTapped(ObjectType)
         case playButtonTapped(Double)
         case stopButtonTapped(Double)
+        case menuButtonObjectTapped(UUID?)
     }
 
     public var body: some ReducerProtocol<State, Action> {
         BindingReducer()
-        Reduce { state, action in
-            switch action {
-                case .showSelected(let show):
+        Reduce(self.core)
+    }
+
+    private func core(into state: inout State, action: Action) -> EffectTask<Action> {
+        switch action {
+            case .showSelected(let show):
+                state.selectedShow = show
+                return .none
+            case .addObjectTapped(let objType):
+                guard var show = state.selectedShow else {
+                    return .none
+                }
+                /// 1. create a new Object
+                /// the number of the object is the last object of that type in the show +1
+                let objCount =
+                    show.objects
+                    .filter {
+                        $0.objType == objType
+                    }
+                    .count + 1
+                let objectName = objType.rawValue.capitalized + " \(objCount)"
+                let object = ShowObject(
+                    isOutlined: false,
+                    name: objectName,
+                    number: Double(objCount),
+                    objType: objType
+                )
+                /// 2. add it to the show's object array
+                if show.objects.count == 0 {
+                    show.objects = [object]
                     state.selectedShow = show
-                    return .none
-                case .addObjectTapped(let objType):
-                    guard var show = state.selectedShow else {
-                        return .none
-                    }
-                    /// 1. create a new Object
-                    /// the number of the object is the last object of that type in the show +1
-                    let objCount = show.objects
-                        .filter {
-                            $0.objType == objType
-                        }.count + 1
-                    let objectName = objType.rawValue.capitalized + " \(objCount)"
-                    let object = ShowObject(
-                        isOutlined: false,
-                        name: objectName,
-                        number: Double(objCount),
-                        objType: objType
-                    )
-                    /// 2. add it to the show's object array
-                    if show.objects.count == 0 {
-                        show.objects = [object]
-                        state.selectedShow = show
-                    } else {
-                        state.selectedShow?.objects.append(object)
-                    }
-                    /// 3. Save to Core Data
-                    do {
-                        try provider.addObjectToShow(showID: show.id, object: object)
-                    } catch {
-                        print(error)
-                    }
-                    return .none
-                case .playButtonTapped(let objNum):
-                    print(objNum)
-                    return .none
-                case .stopButtonTapped(let objNum):
-                    print(objNum)
-                    return .none
-                default:
-                    return .none
-            }
+                } else {
+                    state.selectedShow?.objects.append(object)
+                }
+                /// 3. Save to Core Data
+                do {
+                    try provider.addObjectToShow(showID: show.id, object: object)
+                } catch {
+                    print(error)
+                }
+                return .none
+            case .playButtonTapped(let objNum):
+                print(objNum)
+                return .none
+            case .stopButtonTapped(let objNum):
+                print(objNum)
+                return .none
+            case .menuButtonObjectTapped(let objID):
+                print(objID?.description ?? "help")
+                state.objectID = objID
+                return .none
+            default:
+                return .none
         }
     }
 }

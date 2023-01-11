@@ -74,8 +74,7 @@ let package = Package(
         .target(
             name: "Show",
             dependencies: [
-                "DataStore",
-                "Utilities",
+                "DataStore", "Utilities",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             ]

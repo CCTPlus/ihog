@@ -15,47 +15,24 @@ import Utilities
 struct ObjectsView: View {
     let store: StoreOf<ShowStore>
     let columns = [
-        GridItem(.fixed(100.0), spacing: 10.0, alignment: .center),
-        GridItem(.fixed(100.0), spacing: 10.0, alignment: .center)
+        GridItem(.flexible(), spacing: 10.0, alignment: .center),
+        GridItem(.flexible(), spacing: 10.0, alignment: .center),
     ]
 
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(viewStore.selectedShow?.objects ?? []) { obj in
-                        VStack {
-                            HStack {
-                                Text("\(obj.objType.rawValue.capitalized) \(obj.number.removeZerosFromEnd())")
-                                Spacer()
-                                Button {
-                                    viewStore.send(.menuButtonObjectTapped)
-                                } label: {
-                                    Image(systemSymbol: .ellipsisBubble)
-                                }
-
-                            }
-                            Text(obj.name)
-                            HStack {
-                                Button {
-                                    viewStore.send(.playButtonTapped(obj.number))
-                                } label: {
-                                    Image(systemSymbol: .playFill)
-                                }
-                                .foregroundColor(.primary)
-                                Button {
-                                    viewStore.send(.playButtonTapped(obj.number))
-                                } label: {
-                                    Image(systemSymbol: .stopFill)
-                                }
-                                .foregroundColor(.primary)
-
-                            }
-                            .padding()
+            GeometryReader { geo in
+                ScrollView {
+                    LazyVGrid(columns: columns) {
+                        ForEach(viewStore.selectedShow?.objects ?? []) { obj in
+                            ObjectView(
+                                width: geo.size.width * 0.30,
+                                object: obj
+                            )
                         }
-                        .background(obj.color)
                     }
                 }
+                .frame(width: geo.size.width, height: geo.size.height)
             }
             .toolbarRole(.navigationStack)
             .toolbar {
