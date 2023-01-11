@@ -13,7 +13,7 @@ import SwiftUI
 struct ObjectView: View {
     var width: CGFloat
     var object: ShowObject
-    
+
     var body: some View {
         Button {
             print("Button")

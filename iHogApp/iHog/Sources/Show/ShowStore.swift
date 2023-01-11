@@ -21,12 +21,39 @@ public struct ShowStore: ReducerProtocol {
         public var selectedShow: Show?
         @BindableState public var selectedTab: Destination
         @BindableState public var isObjectMenuOpen: Bool
+
+        public var objectFilter: [ObjectType: Bool] = [
+            .list: true,
+            .scene: true,
+            .beam: true,
+            .colour: true,
+            .intensity: true,
+            .position: true,
+            .effect: true
+        ]
+
+        public var objects: [ShowObject] {
+            if let show = self.selectedShow {
+                var objsToSend: [ShowObject] = []
+                let objects = show.objects.sorted { $0.number < $1.number }
+
+                for filter in objectFilter {
+                    if filter.value {
+                        objsToSend += objects.filter { $0.objType == filter.key }
+                    }
+                }
+                return objsToSend
+            }
+            return []
+        }
+
         fileprivate var objectID: UUID?
 
         public init(
             show: Show?,
             tab: Destination = .objects,
             isObjectMenuOpen: Bool = false,
+            isFilterMenuOpen: Bool = false,
             objectID: UUID? = nil
         ) {
             self.selectedShow = show
@@ -43,6 +70,7 @@ public struct ShowStore: ReducerProtocol {
         case playButtonTapped(Double)
         case stopButtonTapped(Double)
         case menuButtonObjectTapped(UUID?)
+        case filterButtonTapped(ObjectType)
     }
 
     public var body: some ReducerProtocol<State, Action> {
@@ -97,6 +125,15 @@ public struct ShowStore: ReducerProtocol {
             case .menuButtonObjectTapped(let objID):
                 print(objID?.description ?? "help")
                 state.objectID = objID
+                return .none
+            case .filterButtonTapped(let objType):
+                print("hello")
+                guard var currentFilter = state.objectFilter[objType] else {
+                    print("inside guard")
+                    return .none
+                }
+                currentFilter.toggle()
+                state.objectFilter[objType] = currentFilter
                 return .none
             default:
                 return .none

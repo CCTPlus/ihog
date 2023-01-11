@@ -24,7 +24,7 @@ struct ObjectsView: View {
             GeometryReader { geo in
                 ScrollView {
                     LazyVGrid(columns: columns) {
-                        ForEach(viewStore.selectedShow?.objects ?? []) { obj in
+                        ForEach(viewStore.objects) { obj in
                             ObjectView(
                                 width: geo.size.width * 0.30,
                                 object: obj
@@ -37,8 +37,20 @@ struct ObjectsView: View {
             .toolbarRole(.navigationStack)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button {
-                        print("Hello")
+                    Menu {
+                        ForEach(ObjectType.allCases, id: \.self) { objType in
+                            Button {
+                                viewStore.send(.filterButtonTapped(objType))
+                            } label: {
+                                Text(objType.rawValue.capitalized)
+                                Spacer()
+                                if viewStore.objectFilter[objType] ?? false {
+                                    Image(systemSymbol: .checkmark)
+                                }
+                            }
+
+                        }
+
                     } label: {
                         Image(systemSymbol: .squareGrid2x2)
                     }
