@@ -30,8 +30,8 @@ sudo ln -s /opt/homebrew/opt/swift-format/bin/swift-format /usr/local/bin/swift-
 
 Make sure the code is following the formatter. Here is the command to format the code. Run this from the terminal in the `ihog` folder.
 
-```bash
- swift-format format . -r --configuration .swift-format.json -i
+```bash 
+swift-format format . -r --configuration .swift-format.json -i
 ```
 
 ## Dependencies

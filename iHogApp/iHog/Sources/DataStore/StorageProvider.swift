@@ -9,12 +9,12 @@ import Analytics
 import CoreData
 import Foundation
 
-class StorageProvider {
+public class StorageProvider {
     let persistentContainer: NSPersistentCloudKitContainer
 
     public static let shared = StorageProvider()
 
-    init() {
+    private init() {
         let objectModelURL = Bundle.module.url(forResource: "iHog", withExtension: "momd")
         let mom = NSManagedObjectModel(contentsOf: objectModelURL!)
 

@@ -45,7 +45,7 @@ public struct iHog: ReducerProtocol {
 
         public init(navLocation: Routes? = nil) {
             self.navLocation = navLocation
-            self.showState = ShowStore.State()
+            self.showState = ShowStore.State(show: nil)
         }
     }
 
@@ -66,72 +66,76 @@ public struct iHog: ReducerProtocol {
 
     public var body: some ReducerProtocol<State, Action> {
         BindingReducer()
-        Reduce { state, action in
-            switch action {
-                case .show(let showAction):
-                    switch showAction {
-                        case .showSelected(let show):
-                            state.showState.selectedShow = show
-                    }
-                    return .none
-                case .showTapped(let selectedShow):
-                    state.navLocation = .show
-                    state.selectedShow = selectedShow
-                    return .none
-                case .onAppear:
-                    if state.categories.isEmpty {
-                        state.categories = symbolHelper.getCategoies()
-                        state.iconsInCategories = symbolHelper.sortSymbolsIntoCategories()
-                    }
-                    return .none
-                case .addShowButtonTapped:
-                    analytics.capture(event: .addShow)
-                    state.isAddingShow = true
-                    return .none
-                case .saveButtonTapped(let show):
-                    return .task { [] in
-                        return .saveShowResponse(
-                            TaskResult(
-                                showManager.save(show: show)
-                            )
+        Reduce(self.core)
+        Scope(
+            state: \State.showState,
+            action: /Action.show
+        ) {
+            ShowStore()
+        }
+    }
+
+    private func core(into state: inout State, action: Action) -> EffectTask<Action> {
+        switch action {
+            case .show(_):
+                return .none
+            case .showTapped(let selectedShow):
+                state.showState.selectedShow = selectedShow
+                state.navLocation = .show
+                return .none
+            case .onAppear:
+                if state.categories.isEmpty {
+                    state.categories = symbolHelper.getCategoies()
+                    state.iconsInCategories = symbolHelper.sortSymbolsIntoCategories()
+                }
+                return .none
+            case .addShowButtonTapped:
+                analytics.capture(event: .addShow)
+                state.isAddingShow = true
+                return .none
+            case .saveButtonTapped(let show):
+                return .task { [] in
+                    return .saveShowResponse(
+                        TaskResult(
+                            showManager.save(show: show)
                         )
-                    }
-                case .saveShowResponse(.success(let show)):
-                    print("show saved correctly: \(show.name)")
-                    state.shows.append(show)
-                    state.isAddingShow = false
-                    return .none
-                case .saveShowResponse(.failure):
-                    analytics.capture(event: .errorSavingShow)
-                    print("ERROR SAVING SHOW")
-                    return .none
-                case .fetchShows:
-                    return .task { [] in
-                        .fetchShowsResponse(
-                            TaskResult(showManager.fetchShows())
-                        )
-                    }
-                case .fetchShowsResponse(.success(let shows)):
-                    state.shows = shows
-                    return .none
-                case .fetchShowsResponse(.failure(let error)):
-                    print(error)
-                    return .none
-                case .changeIconButtonTapped:
-                    withAnimation { state.iconSelectorShown.toggle() }
-                    if state.categories.count > 0 {
-                        withAnimation { state.selectedCategory = "indices" }
-                    }
-                    return .none
-                case .selectCategory(let key):
-                    withAnimation { state.selectedCategory = key }
-                    return .none
-                case .selectIcon(let icon):
-                    state.selectedIcon = icon
-                    return .none
-                default:
-                    return .none
-            }
+                    )
+                }
+            case .saveShowResponse(.success(let show)):
+                print("show saved correctly: \(show.name)")
+                state.shows.append(show)
+                state.isAddingShow = false
+                return .none
+            case .saveShowResponse(.failure):
+                analytics.capture(event: .errorSavingShow)
+                print("ERROR SAVING SHOW")
+                return .none
+            case .fetchShows:
+                return .task { [] in
+                    .fetchShowsResponse(
+                        TaskResult(showManager.fetchShows())
+                    )
+                }
+            case .fetchShowsResponse(.success(let shows)):
+                state.shows = shows
+                return .none
+            case .fetchShowsResponse(.failure(let error)):
+                print(error)
+                return .none
+            case .changeIconButtonTapped:
+                withAnimation { state.iconSelectorShown.toggle() }
+                if state.categories.count > 0 {
+                    withAnimation { state.selectedCategory = "indices" }
+                }
+                return .none
+            case .selectCategory(let key):
+                withAnimation { state.selectedCategory = key }
+                return .none
+            case .selectIcon(let icon):
+                state.selectedIcon = icon
+                return .none
+            default:
+                return .none
         }
     }
 }
